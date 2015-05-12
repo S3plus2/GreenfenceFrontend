@@ -1,5 +1,6 @@
-(function() {
-	angular.module('users').factory('UserDocumentService', ['$resource',
+define(['app'], function (app) {
+
+	app.factory('UserDocumentService', ['$resource',
 		function($resource) {
 			return $resource('/api/v1.0/community/user_document/:id.json',
 				{}, {
@@ -12,4 +13,4 @@
 			);
 		}
 	])
-}());
+});

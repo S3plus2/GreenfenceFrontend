@@ -1,5 +1,6 @@
-(function() {
-	angular.module('users').factory('CustomRoleService', ['$resource',
+define(['app'], function (app) {
+
+	app.factory('CustomRoleService', ['$resource',
 		function($resource) {
 			return $resource('/api/v1.0/community/custom_roles/:id.json',
 				{}, {
@@ -12,4 +13,4 @@
 			);
 		}
 	])
-}());
+});

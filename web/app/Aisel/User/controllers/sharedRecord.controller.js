@@ -1,6 +1,6 @@
-(function() {	
+define(['app'], function (app) {
 
-	angular.module('users').controller('SharedRecordCtrl', ['$rootScope', '$scope', '$filter', 'SharedRecordService', 'ss_alert', '$translate', 'ui', '$http', '$timeout',
+	app.controller('SharedRecordCtrl', ['$rootScope', '$scope', '$filter', 'SharedRecordService', 'ss_alert', '$translate', 'ui', '$http', '$timeout',
 		function($rootScope, $scope, $filter, SharedRecordService, ss_alert, $translate, ui, $http, $timeout) {
 	    	
 	    	$scope.$parent.template = {

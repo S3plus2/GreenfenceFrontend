@@ -1,6 +1,6 @@
-(function() {
+define(['app'], function (app) {
 
-	angular.module('users').factory('InvitationService', ['$resource', 
+	app.factory('InvitationService', ['$resource',
 		function($resource) {
 			return $resource('/api/v1.0/community/user.json',
 				{}, {
@@ -9,4 +9,4 @@
 		}
 	])
 
-})();
+});

@@ -1,5 +1,6 @@
-(function() {
-	angular.module('users').controller('CustomRoleCtrl', ['$rootScope', '$routeParams', '$scope', '$compile', '$location', '$translate', '$timeout', 'ss_alert', 'ui','CustomRoleService',
+define(['app'], function (app) {
+
+	app.controller('CustomRoleCtrl', ['$rootScope', '$routeParams', '$scope', '$compile', '$location', '$translate', '$timeout', 'ss_alert', 'ui','CustomRoleService',
 		function($rootScope, $routeParams, $scope, $compile, $location, $translate, $timeout, ss_alert, ui, CustomRoleService) {
 
 			ui.collapse_butt_with_dom($(document))

@@ -1,6 +1,6 @@
-(function() {	
+define(['app'], function (app) {
 
-	angular.module('users').controller('ShareUserDocumentCtrl', ['$rootScope', '$scope', '$filter', 'UserService', 'UserDocumentService', 'UserFolderService', 'ShareUserDocumentService', 'ss_alert', '$translate', 'ui', '$http', '$timeout',
+	app.controller('ShareUserDocumentCtrl', ['$rootScope', '$scope', '$filter', 'UserService', 'UserDocumentService', 'UserFolderService', 'ShareUserDocumentService', 'ss_alert', '$translate', 'ui', '$http', '$timeout',
 		function($rootScope, $scope, $filter, UserService, UserDocumentService, UserFolderService, ShareUserDocumentService,  ss_alert, $translate, ui, $http, $timeout) {
 	    	
 			$scope.share = {

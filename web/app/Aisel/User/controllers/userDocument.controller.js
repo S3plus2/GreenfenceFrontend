@@ -1,6 +1,6 @@
-(function() {
+define(['app'], function (app) {
 
-	angular.module('users').controller('UserDocumentCtrl', ['$rootScope', '$scope', '$compile', '$routeParams', '$location', '$translate', '$timeout', 'ss_alert', 'ui', 'UserDocumentService', 'UserFolderService',
+	app.controller('UserDocumentCtrl', ['$rootScope', '$scope', '$compile', '$routeParams', '$location', '$translate', '$timeout', 'ss_alert', 'ui', 'UserDocumentService', 'UserFolderService',
 		function($rootScope, $scope, $compile, $routeParams, $location, $translate, $timeout, ss_alert, ui, UserDocumentService, UserFolderService) {
 			
 			ui.collapse_butt_with_dom($(document))

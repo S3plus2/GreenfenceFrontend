@@ -1,6 +1,6 @@
-(function() {	
+define(['app'], function (app) {
 
-	angular.module('users').controller('UserInvitationCtrl', ['$rootScope', '$scope', '$filter', 'UserService', 'InvitationService', 'ss_alert', '$translate', 'ui', '$http', '$timeout',
+	app.controller('UserInvitationCtrl', ['$rootScope', '$scope', '$filter', 'UserService', 'InvitationService', 'ss_alert', '$translate', 'ui', '$http', '$timeout',
 		function($rootScope, $scope, $filter, UserService, InvitationService,  ss_alert, $translate, ui, $http, $timeout) {
 	    	
 	    	$scope.invite_Another_User = function() {

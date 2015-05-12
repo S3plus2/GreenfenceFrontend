@@ -16,6 +16,12 @@ define(['app',
     './config/user',
     './controllers/userProfile.controller',
     './services/users',
+    './services/userFolder.service',
+    './services/userDocument.service',
+    './services/shareUserDocument.service',
+    './services/sharedRecord.service',
+    './services/invitation.service',
+    './services/customRole.service'
 ], function (app) {
     console.log('User module loaded ...');
 });
