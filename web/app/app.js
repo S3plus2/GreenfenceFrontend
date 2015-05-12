@@ -40,13 +40,18 @@ define([
             'ui.utils', 'ui.validate', 'ui.gravatar', 'textAngular', 'ngDisqus', 'cgNotify',
             'ngAnimate',
             'angular-loading-bar',
-            'angular-translate',
+            'pascalprecht.translate',
             'environment'
         ]);
 
-        app.run(['$http', '$rootScope', 'settingsService', 'initService',
-            function ($http, $rootScope, settingsService, initService) {
+        app.run(['$http', '$rootScope', 'initService', '$timeout',
+            function ($http, $rootScope, initService, $timeout) {
                 initService.launch();
+
+                $timeout(function(){
+                    console.log('controller loaded');
+                    global_f();
+                });
             }])
             .config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
                 cfpLoadingBarProvider.includeSpinner = false
@@ -57,6 +62,7 @@ define([
                 $locationProvider.html5Mode(true);
                 document.getElementById("page-is-loading").style.visibility = "hidden";
             });
+
 
         return app;
     })

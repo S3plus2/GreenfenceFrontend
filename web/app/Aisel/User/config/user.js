@@ -19,8 +19,8 @@ define(['app'], function (app) {
         .state("user_edit_profile", {
             url: "/:locale/user_edit_profile",
             controller: 'UserProfileCtrl',
-            templateUrl: '/community/user/profile'
-            //templateUrl: '/app/Aisel/Homepage/views/homepage.html',
+            //templateUrl: '/community/user/profile'
+            templateUrl: '/app/Aisel/User/views/profile.html',
             //controller: 'HomepageCtrl'
         });
 
