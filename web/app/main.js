@@ -35,6 +35,7 @@ require.config({
         'angular-notify': '../bower_components/angular-notify/dist/angular-notify.min',
         'md5': '../bower_components/angular-gravatar/build/md5',
         'angular-gravatar': '../bower_components/angular-gravatar/build/angular-gravatar',
+        'angular-translate': '../bower_components/angular-translate/angular-translate.min',
         'angular-disqus': '../bower_components/angular-disqus/src/angular-disqus',
         'jQuery-chosen': '../js/chosen.jquery.min',
         'jQuery-dialog': '../js/dialog',
@@ -65,6 +66,7 @@ require.config({
         "domReady": ["angular"],
         "angular-resource": ["angular"],
         "textAngular": ["angular"],
+        "angular-translate": ["angular"],
         "angular-cookies": ["angular"],
         "ui-bootstrap-tpls": ["angular"],
         "angular-disqus": ["angular"],
@@ -82,6 +84,7 @@ require.config({
         './Aisel/Homepage/AiselHomepage',
         './Aisel/User/AiselUser',
         'bootstrap',
+        'utils',
     ],
     priority: [
         "angular"

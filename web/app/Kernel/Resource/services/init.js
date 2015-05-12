@@ -19,29 +19,13 @@ define(['app'], function (app) {
             '$http',
             '$rootScope',
             'settingsService',
-            'authService',
-            'userService',
             'Environment',
             function ($http,
                       $rootScope,
                       settingsService,
-                      authService,
-                      userService,
                       Environment) {
                 return {
                     launch: function () {
-
-                        // Load user status
-                        userService.getUserInformation().success(
-                            function (data, status) {
-                                console.log(data);
-                                if (data.username) {
-                                    $rootScope.user = data;
-                                } else {
-                                    $rootScope.user = undefined;
-                                }
-                            }
-                        );
 
                         // Load settings data
                         settingsService.getApplicationConfig().success(

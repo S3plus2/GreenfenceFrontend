@@ -14,38 +14,8 @@
 
 define(['app',
     './config/user',
-    './controllers/user',
-    './services/auth',
-    './services/user/user',
+    './controllers/userProfile.controller',
+    './services/users',
 ], function (app) {
     console.log('User module loaded ...');
-
-    app.run(['$http', '$rootScope', 'authService', 'userService',
-        function ($http, $rootScope, authService, userService) {
-            $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-                if (typeof toState.data !== 'undefined') {
-                    console.log('Role needed: ' + toState.data.role);
-                    var role = toState.data.role;
-
-                    if (role == 'user') {
-                        if ($rootScope.user === undefined) {
-                            userService.getUserInformation().success(
-                                function (data, status) {
-                                    if (data.username) {
-                                        $rootScope.user = data;
-                                    } else {
-                                        $rootScope.user = false;
-                                        event.preventDefault();
-                                        authService.authenticateWithModal()
-                                    }
-                                }
-                            );
-                        } else if ($rootScope.user == false) {
-                            event.preventDefault();
-                            authService.authenticateWithModal()
-                        }
-                    }
-                }
-            });
-        }])
 });
