@@ -1,0 +1,120 @@
+<div class="view_container">
+  <h1 class="content_headline about_mod" ng-hide="store.id" > <%= I18n.t('create_a_role') %></h1>
+  <h1 class="content_headline about_mod" ng-show="store.id"> Role Summary</h1>
+    <!-- block to role name -->
+    <div class="add_info_block" >
+      <div class="add_info_header">
+        <div class="add_info_title"><%= t('role_name')%></div>
+        <div class="add_info_colapse_butt"></div>
+      </div>
+      <div class="add_info_content_block">
+        <div class="add_info_content">
+          <p>{{store.name}}</p>
+        </div>
+        <div class="add_info_form_block">
+          <div class="add_info_form_w">
+            <dl class="form_cell form_cell_v1_mod">
+              <dt class="form_c_hline form_v1_mod hline_hide_mod">
+                <label for="role_name">Role Name</label>
+              </dt>                
+              <dd class="form_c_f_w form_v1_mod hline_hide_mod autocomplete_el_v1_mod">
+                <input type="text" id="Enter_role_name" placeholder="Enter Role Name" class="f_c_field default_mod " ng-model="custom_role.name">
+              </dd>
+            </dl>
+          </div>  
+        </div>
+      </div>
+    </div>
+    <!-- end -->
+    <!-- role on -->
+    <div class="add_info_block">
+      <div class="add_info_header">
+        <div class="add_info_title">Role on</div>
+        <div class="add_info_colapse_butt"></div>
+      </div>
+      <div class="add_info_content_block">
+        <div class="add_info_content">
+          <p>{{store.role_on}}</p>
+        </div>
+        <div class="add_info_form_block ">
+          <div class="add_info_form_w">
+            <dl class="form_cell form_cell_v1_mod">
+              <dt class="form_c_hline form_v1_mod hline_hide_mod autocomplete_el_v1_mod">
+                <label for="Enter_name_of_category">Enter role on</label>
+              </dt>            
+              <dd class="form_c_f_w form_v1_mod hline_hide_mod autocomplete_el_v1_mod"> 
+                <ui-select ng-model="custom_role.role_on" theme="selectize" ng-change="setPermissions()" ng-disabled="custom_role.id">
+                  <ui-select-match placeholder="Select a role type in the list or search his name...">{{$select.selected.name}}</ui-select-match>
+                  <ui-select-choices repeat="role_type.value as role_type in role_types |  filter: $select.search">
+                    <div ng-bind-html="role_type.name | highlight: $select.search"></div>
+                  </ui-select-choices>
+                </ui-select>
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end -->
+    <!-- block for permissions -->
+    <div class="add_info_block">
+      <div class="add_info_header">
+        <div class="add_info_title"><%= I18n.t('permissions') %></div>
+        <div class="add_info_colapse_butt"></div>
+      </div>
+      <div class="add_info_content_block">
+        <div class="add_info_content">
+          <ul class="add_info_user_tag_list">
+            <li class="add_info_user_tag_l_item" ng-repeat="permission in store.permissions">     
+              <div class="add_info_user_tag_butt">{{permission.label}}</div>
+            </li>
+          </ul>
+        </div>
+        <div class="add_info_form_block">
+          <div class="add_info_form_w">
+            <dl class="form_cell form_cell_v1_mod">
+              <dt class="form_c_hline form_v1_mod hline_hide_mod autocomplete_el_v1_mod">
+                <label for="Enter_name_of_category">Enter name of permission</label>
+              </dt>
+              <dd class="form_c_f_w form_v1_mod hline_hide_mod autocomplete_el_v1_mod">
+                <select class="user_permissions" ng-model="permission_set" data-placeholder="Enter name of permission" multiple="multiple" class="f_c_field default_mod select_add_category normal_list_v2"
+                    ng-options="permission as permission.label for permission in permission_list track by permission.id" >
+                </select>
+              </dd>
+            </dl>
+          </div>
+          <div class="butt_wrap add_info_form_mod">
+            <div class="butt_cancel"><%= I18n.t('cancel') %></div>
+            <div class="butt_save" ng-click="createRole(custom_role)"><%= I18n.t('save') %></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end -->
+    
+</div>
+
+<div class="view_container" >
+    <div class="add_info_block" ng-show="store.users.length > 0">
+      <table class="greenfence-table">
+          <thead>
+            <tr>
+              <th>User</th>
+              <th>Email</th>
+              <th>Role on</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="data in store.users">
+              <td>{{data.user_name}}</td>
+              <td>{{data.user_email}}</td>
+               <td>{{data.entity_name}}</td>
+              <td><div style="cursor: pointer;color:#608f77;" ng-click="deleteUserFromRole(store.id,data.user_id,data.id)" >Delete From Role </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+
+</div>

@@ -1,0 +1,75 @@
+<div id="shared_by_me" class="view_container">
+	<h1 class="content_headline shared_mod"> Shared by me</h1>
+	<div class="add_info_block" style="border-bottom: 1px solid #F1F1F1;">
+		<div class="table-container">
+		    <table class="greenfence-table">
+		      <thead>
+		        <tr>
+		          <th>Name</th>
+		          <th>Type</th>
+		          <th>Files</th>
+		          <th>No of Users</th>
+		          <th>Actions</th>
+		        </tr>
+		      </thead>
+		      <tbody>
+		        <tr ng-repeat="shared_record in shared_records">
+		          <td>{{shared_record.sharable.folder_name || shared_record.sharable.document_name}}</td>
+		          <td>{{shared_record.sharable_type}}</td>
+		          <td>{{shared_record.sharable.user_documents_count || 'NA'}}</td>
+		          <td>{{0}}</td>
+		          <td><span class="record_sharing_update" ng-click="sharedUsers(shared_record.sharable.id, shared_record.sharable_type)">Manage</span><span class="record_sharing_private" ng-click="unshareAll(shared_record.sharable.id, shared_record.sharable_type)">Make Private</span></td>
+		        </tr>
+		      </tbody>
+		    </table>
+		</div>
+  	</div>
+</div>
+<div id="shared_with_me" class="view_container">
+	<h1 class="content_headline shared_mod"> Shared with me</h1>
+	<div class="add_info_block" style="border-bottom: 1px solid #F1F1F1;">
+		<div class="table-container">
+		    <table class="greenfence-table">
+		      <thead>
+		        <tr>
+		          <th>Name</th>
+		          <th>Type</th>
+		          <th>Files</th>
+		          <th>Name of Users</th>
+		        </tr>
+		      </thead>
+		      <tbody>
+		        <tr ng-repeat="sharing_record in sharing_records">
+		          <td ng-show="sharing_record.sharable.document_name"><a href="#/user_document/{{sharing_record.sharable.id}}/sharing_record_detail">{{sharing_record.sharable.document_name}}</a></td>
+		          <td ng-show="sharing_record.sharable.folder_name"><a href="">{{sharing_record.sharable.folder_name}}</a></td>
+		          <td>{{sharing_record.sharable_type}}</td>
+		          <td>{{sharing_record.sharable.user_documents_count || 'NA'}}</td>
+		          <td>{{sharing_record.shareee.first_name}}{{sharing_record.shareee.last_name}}</td>
+		        </tr>
+		      </tbody>
+		    </table>
+		  </div>
+  	</div>
+</div>
+<div id="remove_shared_user" style="display:none" title="Remove users fron “folder/document”">
+  	<div class="dialog_content">
+    	<div class="dialog_form remove_shared_user">
+    		<ul class="popup_list">	            
+	            <li class="popup_list_item" ng-repeat="shared_user in shared_users">
+	                <div class="user_block msg_mod popup_mod ">
+	                    <div class="user_avatar_w msg_mod popup_mod "><img ng-src="{{shared_user.user.image.image.thumb.url}}" alt="{{shared_user.user.name}}" class="user_avatar_img msg_mod popup_mod">
+	                    </div>
+	                    <div class="user_name msg_mod popup_mod" style="line-height: 1.5;">{{shared_user.user.name}} <br> <span style="font-size: 10px;">{{shared_user.user.email}}</span></div>
+	                </div>
+	              	<div class="user_remove_butt mod_1" ng-click="removeUser(shared_user)">Remove</div>
+	            </li>
+          	</ul>
+    	</div>
+    	<div style="height: 1.6em; background: white; padding: 2px auto;">
+    		<div id="unshare_msg_box" style="text-align: center; padding: 5px 0px;">
+    	</div>
+    </div>
+    <footer class="dialog_footer" style="display: none;">
+      <div class="dialog_cancel_butt">Cancel</div>      
+    </footer>
+</div>

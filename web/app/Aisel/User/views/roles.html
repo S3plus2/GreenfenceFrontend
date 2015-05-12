@@ -1,0 +1,24 @@
+<div class="add_info_block" ng-show="custom_roles.length > 0" >
+    <div class="table-container">
+      <table class="greenfence-table">
+        <thead>
+          <tr>
+            <th>Role name</th>
+            <th>Users</th>
+            <th>Created Date</th>
+            <th>Updated Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="role in custom_roles">
+            <td><a href="#/custom_role/show/{{role.id}}">{{role.name}}</a></td>
+            <td>{{role.users}}</td>
+            <td>{{role.created_at}}</td>
+            <td>{{role.updated_at}}</td>
+            <td><div style="cursor: pointer;color:#608f77;" ng-click="deleteRole(role.id)">Delete</div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>

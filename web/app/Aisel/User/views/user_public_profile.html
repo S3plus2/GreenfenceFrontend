@@ -1,0 +1,60 @@
+<div class="main_row layuot_mod_1" ng-cloak>
+  <section class="content_sub_w">
+    <h2 class="content_headline second_mod"><%= I18n.t('companies') %> </h2>
+    <article class="post_block user_mod">
+      <h3 class="post_hline">{{user.user_profile_attributes.title}}</h3>
+      <div class="post_b_w">
+        <header class="post_header">
+          <div class="user_block profile_small_mod ">
+            <div class="user_avatar_w profile_small_mod "><img ng-src="{{user.company.logo.url}}" alt="{{user.company.name}}" class="user_avatar_img profile_small_mod"/>
+            </div>
+            <div class="user_name profile_small_mod">{{user.company.name}}</div>
+          </div>
+        </header>
+        <div class="post_content">
+          <p>{{user.company.company_profile.summary || "[ No company description provided ]"}}</p>
+        </div>
+        <footer class="post_footer">
+          <ul class="post_f_list">
+            <li class="post_f_list_item">
+              <dl class="tag_block">
+                <dt class="tag_b_text"><%= I18n.t('products') %></dt>
+                <dd class="tag_b_value">{{user.company.products_count}}</dd>
+              </dl>
+            </li>
+            <li class="post_f_list_item">
+              <dl class="tag_block">
+                <dt class="tag_b_text"><%= I18n.t('service') %></dt>
+                <dd class="tag_b_value">{{user.company.services_count || 0}}</dd>
+              </dl>
+            </li>
+            <li class="post_f_list_item">
+              <dl class="tag_block">
+                <dt class="tag_b_text"> <%= I18n.t('certificates') %> </dt>
+                <dd class="tag_b_value">0</dd>
+              </dl>
+            </li>
+          </ul>
+        </footer>
+      </div>
+    </article>
+  </section>
+  <section class="content_sub_w">
+    <h2 class="content_headline second_mod"><%= I18n.t('tags') %> </h2>
+    <dl class="user_endorse_block" ng-repeat='tag in user.tags'>
+      <dt class="user_endorse_skill">{{tag}}</dt>
+      <dd class="user_endorsed_list">
+        <div class="user_block endorse_mod ">
+          <div class="user_avatar_w endorse_mod "><img ng-src="<%= asset_path 'avatar.png' %>" alt="" class="user_avatar_img endorse_mod"/>
+          </div>
+        </div>
+        <div class="user_block endorse_mod ">
+          <div class="user_avatar_w endorse_mod "><img ng-src="<%= asset_path 'avatar.png' %>" alt="" class="user_avatar_img endorse_mod"/>
+          </div>
+        </div>
+        <div class="endorse_count">30+</div>
+        <div class="endorse_butt"><%= I18n.t('endorse') %> </div>
+      </dd>
+    </dl>
+  </section>
+</div>

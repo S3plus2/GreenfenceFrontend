@@ -1,0 +1,24 @@
+<% if current_user.sign_in_count == 1 && current_user.is_welcome_message_closed == false %>
+  <div class="video_back_block">
+    <div class="video_back">
+      <video autoplay="" poster="<%= asset_path 'polina.jpg' %>" loop="" class="video_block">
+        <source src="<%= asset_path 'polina.webm' %>" type="video/webm">
+        <source src="<%= asset_path 'polina.mp4' %>" type="video/mp4">
+      </video>
+    </div>
+    <div class="b_block">
+      <h1 class="b_block_hline">Welcome! To Greenfence</h1>
+      <div class="b_block_content">
+        <div class="b_block_text">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu</p>
+        </div>
+        <ul class="b_block_list">
+          <li class="b_block_l_item"><a href="" title="Watch video" class="b_block_link">Watch video</a></li>
+          <li class="b_block_l_item"><a href="" title="Go to help center" class="b_block_link">Go to help center</a></li>
+          <li class="b_block_l_item"><a href="" title="Email us" class="b_block_link">Email us</a></li>
+        </ul>
+      </div>
+      <div class="b_block_close_butt" ng-click='close_butt($event)'></div>
+    </div>
+  </div>      
+<% end %>

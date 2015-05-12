@@ -23,21 +23,21 @@ define(['app'], function (app) {
 			list) {
 
 
-			//$scope.communication = {
-			//	to_user_id: "",
-			//	message: ""
-			//};
-            //
-			//$scope.countries = list.countries
-			//$scope.states = list.states
-			//ui.collapse_butt_with_dom($(document))
-            //
-			//$scope.$parent.template = {
-			//	header : '/community/common/header',
-			//	slider: '/community/user/slider',
-			//	rightmenu: '/community/user/rightmenu',
-			//	footer: ''
-			//}
+			$scope.communication = {
+				to_user_id: "",
+				message: ""
+			};
+
+			$scope.countries = list.countries
+			$scope.states = list.states
+			ui.collapse_butt_with_dom($(document))
+
+			$scope.$parent.template = {
+				header : '/community/common/header',
+				slider: '/app/Aisel/User/views/slider.html',
+				rightmenu: '/app/Aisel/User/views/rightmenu.html',
+				footer: ''
+			}
             //
 			//$scope.job_titles = [
 			//	{name: "Auditor"},
@@ -158,9 +158,9 @@ define(['app'], function (app) {
 			//};
             //
 		}
-	]);
-	//.controller('UserEditProfileRightMenuCtrl', ['$rootScope', '$scope', '$filter', '$upload', 'UserService', 'ss_alert', '$translate', 'ui',
-	//	function($rootScope, $scope, $filter, $upload, UserService, ss_alert, $translate, ui) {
+	])
+	.controller('UserEditProfileRightMenuCtrl', ['$rootScope', '$scope', '$filter', '$upload', 'UserService', 'ss_alert', '$translate', 'ui',
+		function($rootScope, $scope, $filter, $upload, UserService, ss_alert, $translate, ui) {
 	//		ui.menu_cat_option_butt()
     //
 	//		$scope.myImage = '';
@@ -213,10 +213,10 @@ define(['app'], function (app) {
 	//			}
 	//		}
     //
-	//	}
-	//])
-	//.controller('UserPublicProfileCtrl', ['$rootScope', '$scope', '$routeParams', '$filter', 'UserService', 'FollowService', 'MessageService', 'ss_alert', '$translate', '$timeout',
-	//	function($rootScope, $scope, $routeParams, $filter, UserService, FollowService, MessageService, ss_alert, $translate, $timeout) {
+		}
+	])
+	.controller('UserPublicProfileCtrl', ['$rootScope', '$scope', '$routeParams', '$filter', 'UserService', 'FollowService', 'MessageService', 'ss_alert', '$translate', '$timeout',
+		function($rootScope, $scope, $routeParams, $filter, UserService, FollowService, MessageService, ss_alert, $translate, $timeout) {
 	//		$scope.$parent.template = {
 	//			header : '/community/common/header',
 	//			slider: '/community/user/user_slider',
@@ -304,10 +304,10 @@ define(['app'], function (app) {
 	//			global_f();
 	//		});
     //
-	//	}
-	//])
-	//.controller('UserSettingsCtrl', ['$rootScope', '$scope', '$routeParams', '$timeout', '$filter', 'UserService', 'ss_alert', '$translate', 'ui', 'list',
-	//	function($rootScope, $scope, $routeParams, $timeout, $filter, UserService, ss_alert, $translate, ui, list) {
+		}
+	])
+	.controller('UserSettingsCtrl', ['$rootScope', '$scope', '$routeParams', '$timeout', '$filter', 'UserService', 'ss_alert', '$translate', 'ui', 'list',
+		function($rootScope, $scope, $routeParams, $timeout, $filter, UserService, ss_alert, $translate, ui, list) {
     //
 	//		$scope.$parent.template = {
 	//			header : '/community/common/header',
@@ -391,11 +391,11 @@ define(['app'], function (app) {
 	//				$scope.user.language_preference = temp[0]
 	//			})
 	//		}, 200)
-	//	}
-	//])
-    //
-	//.controller('UserDocumentFilterCtrl', ['$rootScope', '$scope', '$timeout', 'ui', 'UserDocumentService', 'UserFolderService',
-	//	function($rootScope, $scope, $timeout, ui, UserDocumentService, UserFolderService) {
+		}
+	])
+
+	.controller('UserDocumentFilterCtrl', ['$rootScope', '$scope', '$timeout', 'ui', 'UserDocumentService', 'UserFolderService',
+		function($rootScope, $scope, $timeout, ui, UserDocumentService, UserFolderService) {
 	//		ui.share_folder_dialog_box()
 	//		$scope.setDocuments = function() {
 	//			UserDocumentService.query().$promise.then(function(data) {
@@ -421,8 +421,7 @@ define(['app'], function (app) {
 	//			$scope.setFolders()
 	//		});
 	//		$scope.$on('$destroy', unbind_2);
-	//	}
-	//])
-
+		}
+	])
 
 });

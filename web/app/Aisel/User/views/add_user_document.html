@@ -1,0 +1,462 @@
+<div class="view_container">
+  <div class="content_block">
+    <h1 class="content_headline" ng-hide="store.id">Add Personal Documents/Certificates</h1>
+    <h1 class="content_headline" ng-show="store.id">Edit Personal Documents/Certificates</h1>
+    <div class="add_info_sub_header">
+      <div ng-show="store.id" class="wizard_view_butt"><a href="#/user_document/{{store.id}}/sharing_record_detail">View</a></div>
+      <div class="wizards_save_draft_butt">Save Draft</div>
+      <div class="wizards_delete_butt">Delete</div>
+    </div>
+    <div class="add_info_block">
+        <div class="add_info_header">
+          <div class="add_info_title">Document Type</div>
+          <div class="add_info_colapse_butt operation_box"></div>
+        </div>
+        <div class="add_info_content_block">
+          <div ng-if="store.document_definition" class="add_info_content">
+            <p>{{store.document_definition.document_type}}</p>
+          </div>
+          <div class="add_info_form_block operation_box">
+            <div class="add_info_form_w">
+              <dl class="form_cell form_cell_v1_mod">
+                <dt class="form_c_hline form_v1_mod hline_hide_mod">
+                  <label for="Operation_type">Document Type</label>
+                </dt>                
+                <dd class="form_c_f_w form_v1_mod hline_hide_mod autocomplete_el_v1_mod">
+                  <ui-select ng-model="document.document_definition_id" theme="selectize" ng-change="getDocumentTypeData({{$select.selected.id}})" ng-disabled="document.id && store.document_definition_id">
+                    <ui-select-match placeholder="Select a document type in the list or search its name...">{{$select.selected.text}}</ui-select-match>
+                    <ui-select-choices repeat="document_type.id as document_type in documentTypes |  filter: $select.search">
+                      <div ng-bind-html="document_type.text | highlight: $select.search"></div>
+                    </ui-select-choices>
+                  </ui-select>
+                </dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="add_info_block title_mod">
+      <div class="add_info_header">
+        <div class="add_info_title">Name of document</div>
+        <div class="add_info_colapse_butt"></div>
+      </div>
+      <div class="add_info_content_block">
+        <div ng-if="store.id" class="add_info_content">
+          <p>{{store.document_name}}</p>
+        </div>
+        <div class="add_info_form_block" style="display: none;">
+          <div class="add_info_form_w">
+            <dl class="form_cell form_cell_v1_mod">
+              <dt class="form_c_hline form_v1_mod hline_hide_mod">
+                <label for="Enter_name_of_document">Enter name of document</label>
+              </dt>
+              <dd class="form_c_f_w form_v1_mod hline_hide_mod">
+                <input type="text" id="Enter_name_of_document" placeholder="Enter name of document" class="f_c_field default_mod" ng-model="document.document_name">
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="add_info_block upload_mod">
+      <div class="add_info_header">
+        <div class="add_info_title">Upload file(s)</div>
+        <div class="add_info_colapse_butt"></div>
+      </div>
+      <div class="add_info_content_block">
+        <div ng-if="store.id" class="add_info_content">
+          <p><a ng-if="store.document_files" ng-repeat="file in store.document_files" href="" ng-click="showFile(file)" title="Click here to see file" class="file_link ng-scope">View File</a></p>
+        </div>    
+        <div class="add_info_form_block" style="display: none;">
+          <div class="add_info_form_w">
+            <dl class="form_cell form_cell_v1_mod">
+              <dt class="form_c_hline form_v1_mod hline_hide_mod">
+                <label for="Browse_files">Browse files</label>
+              </dt>
+              <dd class="form_c_f_w form_v1_mod hline_hide_mod">
+                <input type="file" id="Browse_files" placeholder="Browse files" ng-model="document.document_files_attributes[0].file" base-sixty-four-input class="f_c_field default_mod file_mod "><span class="f_c_field_file_field"><span class="f_c_field_file_text">{{document.document_files_attributes[0].file.filename || "Browse files"}}</span><span class="f_c_field_file_butt">Choose File</span></span>
+              </dd>
+            </dl>
+          </div>
+          <div class="butt_wrap add_info_form_mod">
+            <div class="attach_butt image_mod" ng-click="attach_multiple_files($event)">Attach another file</div>
+          </div>
+        </div>
+      </div>
+    </div>     
+    <div class="add_info_block radio_mod">
+      <div class="add_info_header">
+        <div class="add_info_title">Make document private or public</div>
+        <div class="add_info_colapse_butt"></div>
+      </div>
+      <div class="add_info_content_block">
+        <div class="add_info_form_block" style="display: none;">
+          <div class="add_info_form_w">
+            <ul class="options_b_value_list">
+              <li class="options_b_value_l_item">
+                <label class="lbl_rb_ch_block lbl_rb_ch_default_mod">
+                  <input name="privacy" type="radio" class="lbl_inp_rb_ch" value="private" ng-model="document.access_level"><span class="lbl_rb_ch_text lbl_rb_ch_t_default_mod lbl_rb_ch_t_default_green_white_mod">Private</span>
+                </label>
+              </li>
+              <li class="options_b_value_l_item">
+                <label class="lbl_rb_ch_block lbl_rb_ch_default_mod">
+                  <input name="privacy" type="radio" class="lbl_inp_rb_ch" value="public"  ng-model="document.access_level"><span class="lbl_rb_ch_text lbl_rb_ch_t_default_mod lbl_rb_ch_t_default_green_white_mod">Public</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="add_info_block new_folder_mod">
+      <div class="add_info_header">
+        <div class="add_info_title">Drop document inside existing folder</div>
+        <div class="create_new_folder_butt">Create new user folder</div>
+      </div>
+      <div class="add_info_content_block">
+        <div class="add_info_form_block open_mod">
+          <div class="folders_block_v2">
+            <div class="folder_list_b_v2_header">
+              <div class="folder_list_b_v2_header_title">{{folders.length || 0}} Folders</div>
+            </div>
+            <ul class="folders_list_v2">
+              <li class="folders_list_item" ng-repeat="folder in folders">
+                <div class="doc_block folder_list_mod">
+                  <div class="doc_title folder_list_mod folder_ico_mod">{{folder.folder_name}}</div>
+                  <div class="doc_info folder_list_mod files_count_mod">{{folder.documents.length}} Document(s)</div>
+                  <div title="Add to this folder" class="doc_action folder_list_mod add_to_folder_mod" ng-click="addFilesToFolder(folder.folder_name, folder.id)">Add to this folder</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="add_info_form_w">
+          </div>
+        </div>
+      </div>
+    </div>    
+    <div class="add_info_block textarea_mod">
+      <div class="add_info_header">
+        <div class="add_info_title">Description</div>
+        <div class="add_info_colapse_butt"></div>
+      </div>
+      <div class="add_info_content_block">
+        <div ng-if="store.id" class="add_info_content">
+          <p>{{store.description}}</p>
+        </div>
+        <div class="add_info_form_block">
+          <div class="add_info_form_w">
+            <dl class="form_cell form_cell_v1_mod">
+              <dt class="form_c_hline form_v1_mod hline_hide_mod">
+                <label for="Add_your_description">Add your description</label>
+              </dt>
+              <dd class="form_c_f_w form_v1_mod hline_hide_mod">
+                <textarea id="Add_your_description" placeholder="Add your description" class="f_c_field default_mod textarea_mod_1 " ng-model="document.description"></textarea>
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="add_info_block radio_mod auth">
+      <div class="add_info_header">
+        <div class="add_info_title">Authenticate this document?</div>
+        <div class="add_info_colapse_butt"></div>
+      </div>
+      <div class="add_info_content_block">
+        <div class="add_info_form_block">
+          <div class="add_info_form_w">
+            <ul class="options_b_value_list">
+              <li class="options_b_value_l_item">
+                <label class="lbl_rb_ch_block lbl_rb_ch_default_mod">
+                  <input name="authenticate" type="radio" class="lbl_inp_rb_ch" value="true" ng-model="document.requires_authentication"><span class="lbl_rb_ch_text lbl_rb_ch_t_default_mod lbl_rb_ch_t_default_green_white_mod">Yes</span>
+                </label>
+              </li>
+              <li class="options_b_value_l_item">
+                <label class="lbl_rb_ch_block lbl_rb_ch_default_mod">
+                  <input name="authenticate" type="radio" class="lbl_inp_rb_ch" value="false" ng-model="document.requires_authentication"><span class="lbl_rb_ch_text lbl_rb_ch_t_default_mod lbl_rb_ch_t_default_green_white_mod">No</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div ng-show="document.requires_authentication == 'true'" class="add_info_content_block party">
+        <div class="add_info_form_block">
+          <div class="add_info_form_w">
+            <ul class="options_b_value_list">
+              <li class="options_b_value_l_item">
+                <label class="lbl_rb_ch_block lbl_rb_ch_default_mod">
+                  <input name="authentication_mode" type="radio" class="lbl_inp_rb_ch" value="1" ng-model="document.authentication_mode"><span class="lbl_rb_ch_text lbl_rb_ch_t_default_mod lbl_rb_ch_t_default_green_white_mod">First Party</span>
+                </label>
+              </li>
+              <li class="options_b_value_l_item">
+                <label class="lbl_rb_ch_block lbl_rb_ch_default_mod">
+                  <input name="authentication_mode" type="radio" class="lbl_inp_rb_ch" value="2" ng-model="document.authentication_mode"><span class="lbl_rb_ch_text lbl_rb_ch_t_default_mod lbl_rb_ch_t_default_green_white_mod">Second Party</span>
+                </label>
+              </li>
+              <li class="options_b_value_l_item">
+                <label class="lbl_rb_ch_block lbl_rb_ch_default_mod">
+                  <input name="authentication_mode" type="radio" class="lbl_inp_rb_ch" value="3" ng-model="document.authentication_mode"><span class="lbl_rb_ch_text lbl_rb_ch_t_default_mod lbl_rb_ch_t_default_green_white_mod">Third Party</span>
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="add_info_content_block" ng-show="(document.requires_authentication == 'true') && (document.authentication_mode == '1' || document.authentication_mode == '2')">
+        <div class="add_info_form_block">
+          <div class="add_info_form_w">
+            <dl class="form_cell form_cell_v1_mod">
+              <dt class="form_c_hline form_v1_mod hline_hide_mod">
+                <label for="Enter_name_of_document">Enter email of user</label>
+              </dt>
+              <dd class="form_c_f_w form_v1_mod hline_hide_mod">
+                <input type="text" id="Enter_name_of_document" placeholder="Enter email of user" class="f_c_field default_mod" ng-model="document.email_for_athenticate">
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="add_info_block browse_list_mod" ng-show="document.authentication_mode == '3'">
+      <div class="add_info_header">
+        <div class="add_info_title">Browse auditor directory</div>
+        <div class="add_info_colapse_butt"></div>
+      </div>
+      <!-- <div class="add_info_content_block">        
+        <div class="add_info_form_block">
+          <div class="browse_list_block">
+            <div class="browse_list_b_header">
+              <div class="browse_list_b_header_title">10 </div>
+              <dl class="viewing_trigger_b size_1_mod">
+                <dt class="viewing_trigger_hline size_1_mod grey_1_mod">Viewing</dt>
+                <dd class="viewing_trigger_conteiner size_1_mod">
+                  <div data-open-text="Collapse" data-close-text="All" class="viewing_trigger_butt size_1_mod grey_1_mod"></div>
+                </dd>
+              </dl>
+            </div>
+            <div class="browse_list_b_hidden">
+              <dl class="form_cell form_cell_v1_mod browse_list_mod">
+                <dt class="form_c_hline form_v1_mod browse_list_mod">
+                  <label for="Filter_auditors_by_one_of_the_following_certifying_bodies">Filter auditors by one of the following certifying bodies</label>
+                </dt>
+                <dd class="form_c_f_w form_v1_mod browse_list_mod">
+                  <input type="text" id="Filter_auditors_by_one_of_the_following_certifying_bodies" placeholder="Filter auditors by one of the following certifying bodies" class="f_c_field default_mod clear_butt_mod">
+                </dd>
+              </dl>
+              <ul class="info_b_sub_list">
+                <li class="info_b_sub_list_item browse_list_mod">
+                  <div class="user_block msg_mod browse_list_mod ">
+                    <div class="user_avatar_w msg_mod browse_list_mod "><img ng-src="" alt="" class="user_avatar_img msg_mod browse_list_mod">
+                    </div>
+                    <div class="user_name msg_mod browse_list_mod">Michael Abehsera</div>
+                    <div class="user_info msg_mod browse_list_mod">10 undefined</div>
+                  </div>
+                  <div class="user_select_butt">Select </div>
+                </li>
+                <li class="info_b_sub_list_item browse_list_mod">
+                  <div class="user_block msg_mod browse_list_mod ">
+                    <div class="user_avatar_w msg_mod browse_list_mod "><img ng-src="" alt="" class="user_avatar_img msg_mod browse_list_mod">
+                    </div>
+                    <div class="user_name msg_mod browse_list_mod">Michael Abehsera</div>
+                    <div class="user_info msg_mod browse_list_mod">10 undefined</div>
+                  </div>
+                  <div class="user_selected_butt">Selected</div>
+                </li>
+              </ul>
+            </div>
+            <ul class="info_b_sub_list">
+              <li class="info_b_sub_list_item browse_list_mod">
+                <div class="user_block msg_mod browse_list_mod ">
+                  <div class="user_avatar_w msg_mod browse_list_mod "><img ng-src="" alt="" class="user_avatar_img msg_mod browse_list_mod">
+                  </div>
+                  <div class="user_name msg_mod browse_list_mod">Michael Abehsera</div>
+                  <div class="user_info msg_mod browse_list_mod">10 undefined</div>
+                </div>
+                <div class="user_select_butt">Select </div>
+              </li>
+              <li class="info_b_sub_list_item browse_list_mod">
+                <div class="user_block msg_mod browse_list_mod selected_mod ">
+                  <div class="user_avatar_w msg_mod browse_list_mod selected_mod "><img ng-src="" alt="" class="user_avatar_img msg_mod browse_list_mod selected_mod">
+                  </div>
+                  <div class="user_name msg_mod browse_list_mod selected_mod">Michael Abehsera</div>
+                  <div class="user_info msg_mod browse_list_mod selected_mod">10 undefined</div>
+                </div>
+                <div class="user_selected_butt">Selected</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div> -->
+      <div class="add_info_content_block">          
+        <div class="add_info_form_block auditor_box">
+          <div class="add_info_form_w">
+            <dl class="form_cell form_cell_v1_mod">
+              <dt class="form_c_hline form_v1_mod hline_hide_mod">
+                <label for="Operation_type">Select an Auditor</label>
+              </dt>
+              <dd id="users_list" class="form_c_f_w form_v1_mod hline_hide_mod autocomplete_el_v1_mod">
+                <ui-select ng-model="document.authentication_auditor_id" theme="selectize" >
+                  <ui-select-match placeholder="Select an Auditor in the list or search its name...">{{$select.selected.name}}</ui-select-match>
+                  <ui-select-choices repeat="auditor.id as auditor in auditors |  filter: $select.search">
+                    <div ng-bind-html="auditor.name | highlight: $select.search"></div>
+                    <small style="font-size: 10px;" ng-bind-html="auditor.email | highlight: $select.search"></small>
+                  </ui-select-choices>
+                </ui-select>
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="dynamic_content">
+      <content-item-document ng-repeat="definition in definitions" data="definition"></content-item-document>
+    </div>
+    <div class="add_info_block title_mod">
+      <div class="add_info_header">
+        <div class="add_info_title">Expiration date</div>
+        <div class="add_info_colapse_butt"></div>
+      </div>
+      <div class="add_info_content_block">
+        <div ng-if="store.id" class="add_info_content">
+          <p>{{store.expiration_date}}</p>
+        </div>
+        <div class="add_info_form_block">
+          <div class="add_info_form_w">
+            <dl class="form_cell form_cell_v1_mod">
+              <dt class="form_c_hline form_v1_mod hline_hide_mod">
+                <label for="000">MM/DD/YYYY</label>
+              </dt>
+              <dd class="form_c_f_w form_v1_mod hline_hide_mod">
+                <input type="text" id="000" placeholder="MM/DD/YYYY" class="f_c_field default_mod " ng-model="document.expiration_date">
+              </dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="add_info_footer"><a href="" class="wizard_add_butt" ng-click="createDocument(document)">Add</a></div>
+  </div>
+</div>
+<div id="create_user_folder" style="display:none" title="Create a folder" ng-controller="UserFolderCtrl">
+  <div class="dialog_content">
+    <div class="dialog_form">
+      <dl class="form_cell form_cell_v1_mod">
+        <dt class="form_c_hline form_v1_mod hline_hide_mod">
+          <label for="Name_of_folder">Name of folder</label>
+        </dt>
+        <dd class="form_c_f_w form_v1_mod hline_hide_mod">
+          <input type="text" id="Name_of_folder" placeholder="Name of folder" ng-model="folder.folder_name" class="f_c_field default_mod ">
+        </dd>
+      </dl>
+      <dl class="form_cell form_cell_v1_mod">
+        <dt class="form_c_hline form_v1_mod hline_hide_mod">
+          <label for="Enter_names_of_documemntscertificates_to_add_to_this_folder">Folder Description</label>
+        </dt>
+        <dd class="form_c_f_w form_v1_mod hline_hide_mod">
+          <input type="text" id="Enter_names_of_documemntscertificates_to_add_to_this_folder" ng-model="folder.description" placeholder="Folder Description" class="f_c_field default_mod ">
+        </dd>
+      </dl>
+    </div>
+    <div id="user_folder_msg_box" style="text-align: center; padding: 5px 0px;">
+    </div>
+  </div>  
+  <footer class="dialog_footer">
+    <div class="dialog_cancel_butt">Cancel</div>
+    <div class="create_folder_butt" ng-click="createFolder(folder)">Create</div>
+  </footer>
+</div>
+<div ng-controller="ShareUserDocumentCtrl">
+  <div id="share_link_folder" style="display:none" title="Share link to “folder/document name”">
+    <div class="dialog_content">
+      <div class="dialog_form">
+        <dl class="form_cell form_cell_v1_mod">
+          <dt class="form_c_hline form_v1_mod hline_hide_mod">
+            <label for="Name_of_folder">Name of folder</label>
+          </dt>
+          <dd class="form_c_f_w form_v1_mod hline_hide_mod">
+            <ui-select ng-model="share.folder_id" theme="selectize">
+              <ui-select-match placeholder="Name of folder">{{$select.selected.folder_name}}</ui-select-match>
+              <ui-select-choices repeat="user_folder.id as user_folder in user_folders | filter: $select.search">
+                <div ng-bind-html="user_folder.folder_name | highlight: $select.search"></div>
+              </ui-select-choices>
+            </ui-select>
+          </dd>
+        </dl>
+        <dl class="form_cell form_cell_v1_mod">
+          <dt class="form_c_hline form_v1_mod hline_hide_mod">
+            <label for="Enter_name_of_user_group_or_email">Enter name of user, group, or email</label>
+          </dt>
+          <dd id="users_list" class="form_c_f_w form_v1_mod hline_hide_mod">
+            <ui-select ng-model="share.user_id" theme="selectize">
+              <ui-select-match placeholder="Enter name of user, group, or email">{{$select.selected.name}}</ui-select-match>
+              <ui-select-choices repeat="user.id as user in users | filter: $select.search">
+                <div ng-bind-html="user.name | highlight: $select.search"></div>
+                <small style="font-size: 10px;" ng-bind-html="user.email | highlight: $select.search"></small>
+              </ui-select-choices>
+            </ui-select>
+          </dd>
+        </dl>
+        <dl class="form_cell form_cell_v1_mod">
+          <dt class="form_c_hline form_v1_mod hline_hide_mod">
+            <label for="Add_message">Add message</label>
+          </dt>
+          <dd class="form_c_f_w form_v1_mod hline_hide_mod">
+            <textarea id="Add_message" ng-model="share.message" placeholder="Add message" class="f_c_field default_mod textarea_mod_2 "></textarea>
+          </dd>
+        </dl>
+      </div>
+      <div id="share_folder_msg_box" style="text-align: center; padding: 5px 0px;">
+    </div>
+    <footer class="dialog_footer">
+      <div class="dialog_cancel_butt">Cancel</div>
+      <div class="share_link_folder_butt" ng-click="shareFolder(share)">Share</div>
+    </footer>
+  </div>
+  <div id="share_link_document" style="display:none" title="Share link to “folder/document name”">
+    <div class="dialog_content">
+      <div class="dialog_form">
+        <dl class="form_cell form_cell_v1_mod">
+          <dt class="form_c_hline form_v1_mod hline_hide_mod">
+            <label for="Name_of_folder">Name of Document</label>
+          </dt>
+          <dd class="form_c_f_w form_v1_mod hline_hide_mod">
+            <ui-select ng-model="share.document_id" theme="selectize">
+              <ui-select-match placeholder="Name of document">{{$select.selected.document_name}}</ui-select-match>
+              <ui-select-choices repeat="user_document.id as user_document in user_documents | filter: $select.search">
+                <div ng-bind-html="user_document.document_name | highlight: $select.search"></div>
+              </ui-select-choices>
+            </ui-select>
+          </dd>
+        </dl>
+        <dl class="form_cell form_cell_v1_mod">
+          <dt class="form_c_hline form_v1_mod hline_hide_mod">
+            <label for="Enter_name_of_user_group_or_email">Enter name of user, group, or email</label>
+          </dt>
+          <dd id="users_list" class="form_c_f_w form_v1_mod hline_hide_mod">
+            <ui-select ng-model="share.user_id" theme="selectize">
+              <ui-select-match placeholder="Enter name of user, group, or email">{{$select.selected.name}}</ui-select-match>
+              <ui-select-choices repeat="user.id as user in users | filter: $select.search">
+                <div ng-bind-html="user.name | highlight: $select.search"></div>
+                <small style="font-size: 10px;" ng-bind-html="user.email | highlight: $select.search"></small>
+              </ui-select-choices>
+            </ui-select>
+          </dd>
+        </dl>
+        <dl class="form_cell form_cell_v1_mod">
+          <dt class="form_c_hline form_v1_mod hline_hide_mod">
+            <label for="Add_message">Add message</label>
+          </dt>
+          <dd class="form_c_f_w form_v1_mod hline_hide_mod">
+            <textarea id="Add_message" ng-model="share.message" placeholder="Add message" class="f_c_field default_mod textarea_mod_2 "></textarea>
+          </dd>
+        </dl>
+      </div>
+      <div id="share_document_msg_box" style="text-align: center; padding: 5px 0px;">
+    </div>
+    <footer class="dialog_footer">
+      <div class="dialog_cancel_butt">Cancel</div>
+      <div class="share_link_folder_butt" ng-click="shareDocument(share)">Share</div>
+    </footer>
+  </div>
+</div>

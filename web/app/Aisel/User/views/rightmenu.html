@@ -1,0 +1,82 @@
+<div class="secondary_row layuot_mod_1" ng-controller='UserEditProfileRightMenuCtrl'>
+  <div id='crop' style="display: none">
+    <div class="cropArea">
+      <img-crop image="myImage" result-image="myCroppedImage"></img-crop>
+    </div>
+    <div>
+      <div class="butt_save" ng-click="uploadUserImage()" style="margin: 0">Save</div>
+    </div>
+  </div>
+  <div class="user_block about_mod " style="border-bottom: 1px solid #F1F1F1; margin: 0">
+    <div class="user_avatar_w about_mod "><img ng-src="{{user.user_profile_attributes.image.image.thumb.url}}" alt="{{user.name}}" class="user_avatar_img about_mod" style="width: 100%" />
+    </div>
+    <div class="user_name about_mod">{{user.name}}</div>
+    <div class="user_info about_mod">{{user.user_profile_attributes.title}}</div>
+    <button class="user_edit_ava_butt about_mod" id="avatar_file" accept="image/*" ng-file-select ng-file-change="upload($files, $event)"><%= I18n.t('edit_Picture') %></button>
+  </div>
+  <div style="margin: 0px !important;" class="section_menu menu_cat_cell ng-scope" ng-controller="UserDocumentFilterCtrl">
+    <div class="menu_cat_title">   <%= I18n.t('certificates')  + " /"  +  I18n.t('documents')  %> </div>
+      <div class="menu_cat_amount">{{documents.length}}</div>
+      <div class="menu_cat_view">
+        <div class="menu_cat_option_butt filled_mod">
+          <div data-option-text="View All" data-option-open-text="Collapse" class="menu_cat_option_butt_text filled_mod"></div>
+        </div>
+        <div class="menu_cat_view_hidden_b">
+          <dl class="form_cell form_cell_v1_mod">
+            <dt class="form_c_hline form_v1_mod hline_hide_mod menu_cat_search_mod">
+              <label for="Tape_name_of_documentfolder"><%= I18n.t('tape_name_of') %> document/folder</label>
+            </dt>
+            <dd class="form_c_f_w form_v1_mod hline_hide_mod menu_cat_search_mod">
+              <input type="text" id="Tape_name_of_documentfolder" placeholder="Tape name of document/folder" class="f_c_field third_mod menu_cat_search_mod " ng-model="docText">
+            </dd>
+          </dl>
+          <div class="folders_block">
+            <div class="folders_head">
+              <div class="folders_head_hline">Filter by Folder</div>
+              <div class="folders_head_butt add_edit_mod"><%= I18n.t('edit') + "/"  +  I18n.t('add')   %>    </div>
+            </div>
+            <div class="folder_block">
+              <div class="folder_block_list">
+                <div class="folder_b_head" ng-repeat="user_folder in user_folders | filter:docText">
+                  <div class="folder_b_head_title">{{user_folder.folder_name}}</div>
+                  <div class="folder_b_amount">{{user_folder.documents.length}}</div>
+                </div>
+              </div>
+              <ul class="folder_b_action_list">
+                <li class="folder_b_action_l_item"><span class="folder_b_action"><%= I18n.t('edit') %> </span></li>
+                <li class="folder_b_action_l_item"><span class="folder_b_action share_mod">Share</span></li>
+              </ul>              
+            </div>
+            <div class="document_block">
+              <div class="doc_block folders_mod" ng-repeat="document in documents | filter:docText">
+                <div class="doc_title folders_mod "><a href="#/user_document/edit/{{document.id}}" style="text-decoration: none;">{{document.document_name}}</a></div>
+                <div title="Share" class="doc_action folders_mod share_mod"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+  <% if user_signed_in? %>
+    <% if current_user.company && current_user.company.updatable_by?(current_user) %>
+      <a href="#/add_company" style="text-decoration: none;">
+        <div class="create_profile_butt">
+          <div class="first_line"><%= I18n.t('edit_your_business_profile') %> </div>
+        </div>
+      </a>
+    <% elsif current_user.company == nil %>
+      <a href="#/add_company" style="text-decoration: none;">
+        <div class="create_profile_butt">
+          <div class="first_line"><%= I18n.t('create_your_business_profile') %>  </div>
+          <div class="second_line"><%= I18n.t('get_started') %> </div>
+        </div>
+      </a>
+    <% end %>
+  <% end %>
+  <% if current_user.staff_invitable_by?(current_user) %>
+    <div class="invite_users_butt" ><%= I18n.t('invite_users') %></div>
+  <% end %>
+     
+    
+</div>
+

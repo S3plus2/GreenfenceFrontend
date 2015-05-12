@@ -1,0 +1,105 @@
+<% if current_user.type == 'Auditor' %>
+  <div class="offer_header" ng-if="document.requires_authentication && request.auditor_id == userId">
+    <div class="offer_text">{{document.owner}} has requested for you to authenticate this document</div>
+    <div class="detail_make_offer_butt">Make an Offer</div>
+  </div>
+<% end %>
+<div class="main_row layuot_mod_2">
+  <div class="detail_block">
+    <div class="detail_header">
+      <div class="user_block detail_mod ">
+        <div class="user_avatar_w detail_mod "><img ng-src="" alt="" class="user_avatar_img detail_mod"/>
+        </div>
+        <div class="user_name detail_mod">{{document.document_name}}</div>
+        <div class="user_info detail_mod">Issued for name of certificate</div>
+      </div>
+      <div class="detail_header_side_w"><a href="" title="" class="detail_follow_configure_butt">Follow & Configure</a></div>
+    </div>
+    <div class="detail_b_content">      
+      <div class="detail_b_content_text">
+        <h2>Description</h2>
+        <p>{{document.description}}</p>
+        <h2>Uploaded Files</h2>
+        <p><a ng-repeat="document_file in document.document_files" href="" ng-click="showFile(document_file)" title="Click here to see file" class="file_link ng-scope">View File</a></p>
+        <div ng-repeat="(key, value) in document.merged_defination_value">
+          <h2>{{key}}</h2>
+          <p>{{value}}</p>
+        </div>        
+      </div>
+      <div class="detail_b_comments"><span class="detail_b_comments_info">2 Comments & 1 offer</span>
+        <article class="msg_block comment_mod" ng-if="userId == request.doc_owner_id">
+          <header class="msg_header">
+            <div class="user_block profile_small_mod selected_mod ">
+              <div class="user_avatar_w profile_small_mod selected_mod "><img ng-src="" alt=""  class="user_avatar_img profile_small_mod selected_mod"/>
+              </div>
+              <div class="user_name profile_small_mod selected_mod">Michael Abehsera <span class="name_position">Auditor GFSI</span> has an offer for you</div>
+            </div>
+            <div class="msg_time">3 Min Ago</div>
+          </header>
+          <div class="msg_offer comment_mod">
+            <dl class="msg_offer_info">
+              <dt class="msg_offer_info_hline">Timeline:</dt>
+              <dd class="msg_offer_info_descr">I will have it done by {{request.offer_date_of_auth}}</dd>
+              <dd class="msg_offer_info_value">{{request.price_for_auth}}$</dd>
+            </dl>
+            <div class="msg_offer_accept_butt">Accept & Pay</div>
+          </div>
+          <div class="msg_content comment_mod">
+            <p>{{request.comment}}</p>
+          </div>
+        </article>
+      </div>
+      <div class="form_avatar_block">
+        <div class="user_block form_mod ">
+          <div class="user_avatar_w form_mod "><img ng-src="" alt="" class="user_avatar_img form_mod"/>
+          </div>
+          <div class="user_name form_mod"></div>
+        </div>
+        <dl class="form_cell form_cell_v1_mod">
+          <dt class="form_c_hline form_v1_mod hline_hide_mod hor_mod">
+            <label for="Enter_comment">Enter comment</label>
+          </dt>
+          <dd class="form_c_f_w form_v1_mod hline_hide_mod hor_mod">
+            <input type="text" id="Enter_comment" placeholder="Enter comment" class="f_c_field fourth_mod form_avatar_mod "/>
+          </dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="make_an_offer" style="display:none" title="Make an Offer">
+  <div class="dialog_content">
+    <div class="dialog_form">
+      <dl class="form_cell form_cell_v1_mod">
+        <dt class="form_c_hline form_v1_mod hline_hide_mod">
+          <label for="Name_of_folder">Offer Price</label>
+        </dt>
+        <dd class="form_c_f_w form_v1_mod hline_hide_mod">
+          <input type="text" id="Name_of_folder" placeholder="Offer Price" class="f_c_field default_mod " ng-model="request.price_for_auth">
+        </dd>
+      </dl>
+      <dl class="form_cell form_cell_v1_mod">
+        <dt class="form_c_hline form_v1_mod hline_hide_mod">
+          <label for="Enter_names_of_documemntscertificates_to_add_to_this_folder">Done by date (YYYY-MM-DD)</label>
+        </dt>
+        <dd class="form_c_f_w form_v1_mod hline_hide_mod">
+          <input type="text" id="Enter_names_of_documemntscertificates_to_add_to_this_folder" placeholder="Done by date (YYYY-MM-DD)" class="f_c_field default_mod " ng-model="request.offer_date_of_auth">
+        </dd>
+      </dl>
+      <dl class="form_cell form_cell_v1_mod">
+        <dt class="form_c_hline form_v1_mod hline_hide_mod">
+          <label for="Enter_names_of_documemntscertificates_to_add_to_this_folder">Leave a comment</label>
+        </dt>
+        <dd class="form_c_f_w form_v1_mod hline_hide_mod">
+          <textarea id="Enter_names_of_documemntscertificates_to_add_to_this_folder" placeholder="Leave a comment" class="f_c_field default_mod textarea_mod_1 " ng-model="request.comment"></textarea>
+        </dd>
+      </dl>
+    </div>
+    <div id="make_an_offer_msg_box" style="text-align: center; padding: 5px 0px;">
+    </div>
+  </div>  
+  <footer class="dialog_footer">
+    <div class="dialog_cancel_butt">Cancel</div>
+    <div class="create_folder_butt" ng-click="createOffer(request)">Create</div>
+  </footer>
+</div>

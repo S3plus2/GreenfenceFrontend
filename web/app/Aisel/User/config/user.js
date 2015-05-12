@@ -13,65 +13,70 @@
  */
 
 define(['app'], function (app) {
-    app.config(['$routeProvider','$stateProvider', function ($routeProvider, $stateProvider) {
+    app.config(['$routeProvider', '$stateProvider', function ($routeProvider, $stateProvider) {
 
         $stateProvider
-        .state("userEditProfile", {
-            url: "/:locale/user_edit_profile",
-            controller: 'UserProfileCtrl',
-            templateUrl: '/app/Aisel/User/views/profile.html'
-        });
-
-        //$routeProvider.
-        //    when('/user_edit_profile', {
-        //        controller: 'UserProfileCtrl',
-        //        templateUrl: '/community/user/profile'
-        //    }).
-        //    when('/user_public_profile', {
-        //        controller: 'UserPublicProfileCtrl',
-        //        templateUrl: '/community/user/user_public_profile'
-        //    }).
-        //    when('/user_public_profile/:id', {
-        //        controller: 'UserPublicProfileCtrl',
-        //        templateUrl: '/community/user/user_public_profile'
-        //    }).
-        //    when('/user_settings', {
-        //        controller: 'UserSettingsCtrl',
-        //        templateUrl: '/community/user/user_settings'
-        //    }).
-        //    when('/user_documents', {
-        //        controller: 'UserDocumentCtrl',
-        //        templateUrl: '/community/user/add_user_document'
-        //    }).
-        //    when('/user_document/edit/:documentId', {
-        //        controller: 'UserDocumentCtrl',
-        //        templateUrl: '/community/user/add_user_document'
-        //    }).
-        //    when('/shared_records', {
-        //        controller: 'SharedRecordCtrl',
-        //        templateUrl: '/community/user/shared_records'
-        //    }).
-        //    when('/custom_roles', {
-        //        controller: 'CustomRoleCtrl',
-        //        templateUrl: '/community/user/custom_role'
-        //    }).
-        //    when('/custom_role/show/:customRoleId', {
-        //        controller: 'CustomRoleCtrl',
-        //        templateUrl: '/community/user/custom_role'
-        //    }).
-        //    when('/assign_role', {
-        //        controller: 'AssignRoleCtrl',
-        //        templateUrl: '/community/user/assign_role'
-        //    })
-        //    .when('/roles', {
-        //        controller: 'RolesCtrl',
-        //        templateUrl: '/community/user/roles'
-        //    })
-        //    .when('/user_document/:documentId/sharing_record_detail', {
-        //        controller: 'PublicUserDocumentCtrl',
-        //        templateUrl: '/community/user/document_detail'
-        //    }).
-        //    otherwise({redirectTo: '/user_edit_profile'})
+            .state("userEditProfile", {
+                url: "/:locale/user_edit_profile",
+                controller: 'UserProfileCtrl',
+                templateUrl: '/app/Aisel/User/views/profile.html'
+            })
+            .state('userPublicProfile', {
+                url: "/:locale/user_public_profile",
+                controller: 'UserPublicProfileCtrl',
+                templateUrl: '/app/Aisel/User/views/user_public_profile.html'
+            })
+            .state('userPublicProfileById', {
+                url: "/:locale/user_public_profile/:id",
+                controller: 'UserPublicProfileCtrl',
+                templateUrl: '/app/Aisel/User/views/user_public_profile.html'
+            })
+            .state('userSettings', {
+                url: "/:locale/user_settings",
+                controller: 'UserSettingsCtrl',
+                templateUrl: '/app/Aisel/User/views/user_settings.html'
+            })
+            .state('userDocuments', {
+                url: "/:locale/user_documents",
+                controller: 'UserDocumentCtrl',
+                templateUrl: '/app/Aisel/User/views/add_user_document.html'
+            })
+            .state('userDocumentEditByDocumentId', {
+                url: "/:locale/user_document/edit/:documentId",
+                controller: 'UserDocumentCtrl',
+                templateUrl: '/app/Aisel/User/views/add_user_document.html'
+            })
+            .state('sharedRecords', {
+                url: "/:locale/shared_records",
+                controller: 'SharedRecordCtrl',
+                templateUrl: '/app/Aisel/User/views/shared_records.html'
+            })
+            .state('customRoles', {
+                url: "/:locale/custom_roles",
+                controller: 'CustomRoleCtrl',
+                templateUrl: '/app/Aisel/User/views/custom_role.html'
+            })
+            .state('customRole', {
+                url: "/:locale/custom_role/show/:customRoleId",
+                controller: 'CustomRoleCtrl',
+                templateUrl: '/app/Aisel/User/views/custom_role.html'
+            })
+            .state('assignRole', {
+                url: "/:locale/assign_role",
+                controller: 'AssignRoleCtrl',
+                templateUrl: '/app/Aisel/User/views/assign_role.html'
+            })
+            .state('roles', {
+                url: "/:locale/roles",
+                controller: 'RolesCtrl',
+                templateUrl: '/app/Aisel/User/views/roles.html'
+            })
+            .state('publicUserDocumentCtrl', {
+                url: "/:locale/user_document/:documentId/sharing_record_detail",
+                controller: 'PublicUserDocumentCtrl',
+                templateUrl: '/app/Aisel/User/views/document_detail.html'
+            });
+        //otherwise({redirectTo: '/user_edit_profile'})
 
     }]);
 });

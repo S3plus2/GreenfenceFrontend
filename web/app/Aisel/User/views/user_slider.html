@@ -1,0 +1,45 @@
+<div class="profile_header" ng-cloak>
+  <div class="video_back_block mod_h_1">
+    <div class="video_back mod_h_1">
+      <video autoplay="" poster="<%= asset_path 'test.jpg' %>" loop="" class="video_block">
+        <source src="<%= asset_path 'test.webm' %>" type="video/webm">
+        <source src="<%= asset_path 'test.mp4' %>" type="video/mp4">
+      </video>
+    </div>
+  </div>
+  <div class="profile_header_w">
+    <div ng-class="{ user_profile_mod: public_user.featured }" class="user_block profile_mod">
+      <div class="user_avatar_w profile_mod user_profile_mod "><img ng-src="{{public_user.user_profile_attributes.image.image.url}}" alt="{{public_user.name}}" class="user_avatar_img profile_mod user_profile_mod">
+      </div>
+      <div class="user_name profile_mod user_profile_mod">{{public_user.name}}</div>
+      <div class="user_info profile_mod user_profile_mod">{{public_user.user_profile_attributes.title}}</div>
+      <div class="user_location profile_mod user_profile_mod">{{public_user.address_attributes.city}}</div>
+    </div>
+    <div class="profile_header_butt_w">
+      <div ng-controller="UserPublicProfileCtrl">
+        <div ng-if="public_user.followed_by_current_user == false">
+          <div class="follow_user_butt" ng-click="follow_me(public_user)">Follow</div>
+        </div>
+        <div ng-if="public_user.followed_by_current_user == true">
+            <div class="follow_user_butt" ng-click="unfollow_me(public_user)">Unfollow</div>
+        </div>
+      </div>
+      <div class="message_user_butt">Message</div>
+    </div>
+  </div>
+</div>
+<div class="profile_body" ng-cloak>
+  <div class="profile_about">
+    <h1 class="profile_headline">About</h1>
+    <div class="profile_about_text">
+      <p>{{public_user.user_profile_attributes.executive_experience}}</p>
+    </div>
+  </div>
+  <div class="profile_contact_info">
+    <ul class="profile_contact_list">
+      <li class="profile_contact_l_item"><a href="mailto:{{public_user.email}}" title="{{public_user.email}}" class="profile_contact_link mail_mod">{{public_user.email}}</a></li>
+      <li class="profile_contact_l_item"><a href="http://{{public_user.connections_attributes[0].url || 'Not Provided'}}" title="" class="profile_contact_link site_mod">{{public_user.connections_attributes[0].url || "Not Provided"}}</a></li>
+      <li class="profile_contact_l_item"><a href="http://{{public_user.connections_attributes[1].url || 'Not Provided'}}" title="" class="profile_contact_link linkedin_mod">{{public_user.connections_attributes[1].url || "Not Provided"}}</a></li>
+    </ul>
+  </div>
+</div>
