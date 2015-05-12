@@ -34,8 +34,8 @@ define(['app'], function (app) {
 
 			$scope.$parent.template = {
 				header : '/community/common/header',
-				slider: '/app/Aisel/User/views/slider.html',
-				rightmenu: '/app/Aisel/User/views/rightmenu.html',
+				slider: '/app/Greenfence/User/views/slider.html',
+				rightmenu: '/app/Greenfence/User/views/rightmenu.html',
 				footer: ''
 			}
             //

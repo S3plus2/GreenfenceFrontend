@@ -81,8 +81,8 @@ require.config({
     deps: [
         './environment',
         './Kernel/Resource/KernelResource',
-        './Aisel/Homepage/AiselHomepage',
-        './Aisel/User/AiselUser',
+        './Greenfence/Homepage/GreenfenceHomepage',
+        './Greenfence/User/GreenfenceUser',
         'bootstrap',
         'base.sixty.four',
         'utils'
