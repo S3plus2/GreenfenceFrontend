@@ -14,7 +14,15 @@
 
 define(['app',
     './config/user',
+
     './controllers/userProfile.controller',
+    './controllers/userInvitation.controller',
+    './controllers/userFolder.controller',
+    './controllers/userDocument.controller',
+    './controllers/shareUserDocument.controller',
+    './controllers/sharedRecord.controller',
+    './controllers/customRole.controller',
+
     './services/users',
     './services/userFolder.service',
     './services/userDocument.service',

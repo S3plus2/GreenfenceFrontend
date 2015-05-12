@@ -159,8 +159,8 @@ define(['app'], function (app) {
             //
 		}
 	])
-	.controller('UserEditProfileRightMenuCtrl', ['$rootScope', '$scope', '$filter', '$upload', 'UserService', 'ss_alert', '$translate', 'ui',
-		function($rootScope, $scope, $filter, $upload, UserService, ss_alert, $translate, ui) {
+	.controller('UserEditProfileRightMenuCtrl', ['$rootScope', '$scope', '$filter', 'UserService', 'ss_alert', '$translate', 'ui',
+		function($rootScope, $scope, $filter, UserService, ss_alert, $translate, ui) {
 	//		ui.menu_cat_option_butt()
     //
 	//		$scope.myImage = '';

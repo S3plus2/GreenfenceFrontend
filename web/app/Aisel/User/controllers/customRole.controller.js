@@ -189,4 +189,4 @@ define(['app'], function (app) {
 		}
 	])
 
-})();
+});
