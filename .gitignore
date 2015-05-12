@@ -1,0 +1,12 @@
+#Frontend
+/web/.htaccess
+/web/robots.txt
+/web/sitemap.xml
+/web/images/logo.png
+/web/bundles/*
+/web/bower_components/*
+/web/npm-debug.log
+!/web/media/product/.htaccess
+/web/photo/*
+/web/css/*
+/web/build/*
