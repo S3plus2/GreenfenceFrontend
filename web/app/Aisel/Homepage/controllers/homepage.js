@@ -15,11 +15,7 @@
 define(['app'], function (app) {
     app.controller('HomepageCtrl', ['$location', '$scope', '$routeParams', '$rootScope', 'settingsService', 'Environment',
         function ($location, $scope, $routeParams, $rootScope, settingsService, Environment) {
-            settingsService.getApplicationConfig().success(
-                function (data, status) {
-                    var locale = Environment.currentLocale();
-                    $scope.content = 'homepage';
-                }
-            );
+            $scope.content = 'homepage';
+
         }]);
 });

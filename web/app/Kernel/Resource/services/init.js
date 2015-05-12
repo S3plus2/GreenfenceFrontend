@@ -20,10 +20,13 @@ define(['app'], function (app) {
             '$rootScope',
             'settingsService',
             'Environment',
+            '$timeout',
             function ($http,
                       $rootScope,
                       settingsService,
-                      Environment) {
+                      Environment,
+                      $timeout
+            ) {
                 return {
                     launch: function () {
 
@@ -53,12 +56,20 @@ define(['app'], function (app) {
                                 // Init
                                 setLocale();
                                 setMetaData();
+                                $timeout(function(){
+                                    global_f();
+                                });
 
                                 // Hook for on route change
                                 $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
                                     console.log('State Change ...');
                                     setLocale();
                                     setMetaData();
+
+                                    $timeout(function(){
+                                        global_f();
+                                    });
+
                                 });
                             }
                         );

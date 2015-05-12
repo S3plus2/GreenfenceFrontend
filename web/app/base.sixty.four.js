@@ -1,4 +1,6 @@
-angular.module('community').directive('baseSixtyFourInput', ['$window', function ($window) {
+define(['app'], function (app) {
+
+app.directive('baseSixtyFourInput', ['$window', function ($window) {
 	return {
 		restrict: 'A',
 		require: 'ngModel',
@@ -36,3 +38,5 @@ angular.module('community').directive('baseSixtyFourInput', ['$window', function
 		}
 	};
 }]);
+
+});

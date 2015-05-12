@@ -1,4 +1,5 @@
-<header class="header standard"><a href="index.html" class="logo standard"></a>
+<header class="header standard">
+    <a ui-sref="homepage({locale: 'en'})" class="logo standard"></a>
     <dl class="form_cell form_cell_v1_mod header_search">
         <dt class="form_c_hline form_v1_mod hline_hide_mod header_mod">
             <label for="search">Search for facilities, products, employees etc...</label>
@@ -39,7 +40,10 @@
         </div>
     </nav>
     <div class="user_block header_mod ">
-        <div class="user_avatar_w header_mod "><img src="i/header_user_ava.jpg" alt="Ron Vail" class="user_avatar_img header_mod"/>
+        <div class="user_avatar_w header_mod ">
+            <a ui-sref="userEditProfile({locale: 'en'})">
+                <img src="i/header_user_ava.jpg" alt="Ron Vail" class="user_avatar_img header_mod"/>
+            </a>
         </div>
     </div>
 </header>

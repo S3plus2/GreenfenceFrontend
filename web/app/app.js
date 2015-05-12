@@ -44,17 +44,13 @@ define([
             'environment'
         ]);
 
-        app.run(['$http', '$rootScope', 'initService', '$timeout',
-            function ($http, $rootScope, initService, $timeout) {
+        app.run(['$http', '$rootScope', 'initService',
+            function ($http, $rootScope, initService) {
                 initService.launch();
 
-                $timeout(function(){
-                    console.log('controller loaded');
-                    global_f();
-                });
             }])
             .config(['cfpLoadingBarProvider', function (cfpLoadingBarProvider) {
-                cfpLoadingBarProvider.includeSpinner = false
+                cfpLoadingBarProvider.includeSpinner = false;
                 cfpLoadingBarProvider.includeBar = true;
             }])
             .config(function ($provide, $locationProvider, $httpProvider) {

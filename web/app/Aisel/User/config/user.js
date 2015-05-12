@@ -16,14 +16,11 @@ define(['app'], function (app) {
     app.config(['$routeProvider','$stateProvider', function ($routeProvider, $stateProvider) {
 
         $stateProvider
-        .state("user_edit_profile", {
+        .state("userEditProfile", {
             url: "/:locale/user_edit_profile",
             controller: 'UserProfileCtrl',
-            //templateUrl: '/community/user/profile'
-            templateUrl: '/app/Aisel/User/views/profile.html',
-            //controller: 'HomepageCtrl'
+            templateUrl: '/app/Aisel/User/views/profile.html'
         });
-
 
         //$routeProvider.
         //    when('/user_edit_profile', {

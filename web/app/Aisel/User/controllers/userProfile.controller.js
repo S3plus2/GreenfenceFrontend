@@ -157,11 +157,6 @@ define(['app'], function (app) {
 			//	ss_alert.alert("error", reason.data.errors)
 			//};
             //
-			$timeout(function(){
-				console.log('controller loaded');
-				global_f();
-			});
-
 		}
 	]);
 	//.controller('UserEditProfileRightMenuCtrl', ['$rootScope', '$scope', '$filter', '$upload', 'UserService', 'ss_alert', '$translate', 'ui',

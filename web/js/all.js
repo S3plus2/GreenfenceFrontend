@@ -126,6 +126,9 @@ $(document).ready(function ($) {
 });
 
 function global_f() {
+
+	console.log('Updating Listeners ...');
+
 	global_array = {
 		user_menu_block:'',
 		user_menu_butt:'',

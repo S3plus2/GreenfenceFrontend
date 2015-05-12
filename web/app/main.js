@@ -84,7 +84,8 @@ require.config({
         './Aisel/Homepage/AiselHomepage',
         './Aisel/User/AiselUser',
         'bootstrap',
-        'utils',
+        'base.sixty.four',
+        'utils'
     ],
     priority: [
         "angular"
