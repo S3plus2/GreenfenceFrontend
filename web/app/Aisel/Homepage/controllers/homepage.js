@@ -18,7 +18,7 @@ define(['app'], function (app) {
             settingsService.getApplicationConfig().success(
                 function (data, status) {
                     var locale = Environment.currentLocale();
-                    $scope.content = data.settings[locale].content.homepageContent;
+                    $scope.content = 'homepage';
                 }
             );
         }]);
