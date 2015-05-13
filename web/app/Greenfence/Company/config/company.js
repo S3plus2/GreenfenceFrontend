@@ -13,85 +13,103 @@
  */
 
 define(['app'], function (app) {
-	app.config(['$routeProvider',
-			function($routeProvider) {
-				$routeProvider.
-					when('/operation/:operationId', {
-					controller: 'OperationDetailCtrl',
-					templateUrl: '/community/company/operation_detail'
-					}).
-					when('/add_company', {
-						controller: 'CompanyProfileCtrl',
-						templateUrl: '/community/company/add_company'
+    app.config(['$routeProvider', '$stateProvider', function ($routeProvider, $stateProvider) {
 
-					}).
-					when('/operations', {
-						controller: 'OperationCtrl',
-						templateUrl: '/community/company/add_operation'
-					}).
-					when('/operation/edit/:operationId', {
-						controller: 'OperationCtrl',
-						templateUrl: '/community/company/add_operation'
-					}).
-					when('/add_product', {
-						templateUrl: '/community/company/add_product',
-						controllerAs: 'vm',
-						controller: 'ProductCtrl'
-					}).
-					when('/company_public_profile/', {
-						controller: 'CompanyPublicProfileCtrl',
-						templateUrl: '/community/company/company_public_profile'
-					}).
-					when('/company_public_profile/:id', {
-						controller: 'CompanyPublicProfileCtrl',
-						templateUrl: '/community/company/company_public_profile'
-					}).
-					when('/company_public_profile/filter/:type', {
-						controller: 'CompanyPublicProfileCtrl',
-						templateUrl: '/community/company/company_public_profile'
-					}).
-					when('/company_public_profile/:id/filter/:type', {
-						controller: 'CompanyPublicProfileCtrl',
-						templateUrl: '/community/company/company_public_profile'
-					}).
-					when('/services', {
-						controller: 'ServiceCtrl',
-						templateUrl: '/community/company/add_service'
-					}).
-					when('/service/edit/:serviceId', {
-						controller: 'ServiceCtrl',
-						templateUrl: '/community/company/add_service'
-					}).
-					when('/add_supply_chain', {
-						controller: 'SupplyChainCtrl',
-						templateUrl: '/community/company/add_supply_chain'
-					}).
-					when('/add_document_definitions', {
-						controller: 'DocumentDefinitionsCtrl',
-						templateUrl: '/community/company/add_document_definition'
-					}).
-					when('/company_documents', {
-						controller: 'CompanyDocumentCtrl',
-						templateUrl: '/community/company/add_company_document'
-					}).
-					when('/company_document/edit/:documentId', {
-						controller: 'CompanyDocumentCtrl',
-						templateUrl: '/community/company/add_company_document'
-					}).
-					when('/assign_requirements', {
-						controller: 'RequirementAssignmentCtrl',
-						templateUrl: '/community/company/assign_requirements'
-					}).
-					when('/supplier/:supplierId', {
-						controller: 'SupplierCtrl',
-						templateUrl: '/community/company/supplier'
-					}).
-					when('/buyer/:buyerId', {
-						controller: 'BuyerCtrl',
-						templateUrl: '/community/company/buyer'
-					})/*.
-					otherwise({redirectTo: '/'})*/
-			}
-	])
+        $stateProvider
+            .state('operationById', {
+                url: "/:locale/operation/:operationId",
+                controller: 'OperationDetailCtrl',
+                templateUrl: '/community/company/operation_detail'
+            })
+            .state('addCompany', {
+                url: "/:locale/add_company",
+                controller: 'CompanyProfileCtrl',
+                templateUrl: '/community/company/add_company'
+            })
+            .state('operations', {
+                url: "/:locale/operations",
+                controller: 'OperationCtrl',
+                templateUrl: '/community/company/add_operation'
+            })
+            .state('operationEditById', {
+                url: "/:locale/operation/edit/:operationId",
+                controller: 'OperationCtrl',
+                templateUrl: '/community/company/add_operation'
+            })
+            .state('addProduct', {
+                url: "/:locale/add_product",
+                templateUrl: '/community/company/add_product',
+                controllerAs: 'vm',
+                controller: 'ProductCtrl'
+            })
+            .state('companyPublicProfile', {
+                url: "/:locale/company_public_profile",
+                controller: 'CompanyPublicProfileCtrl',
+                templateUrl: '/community/company/company_public_profile'
+            })
+            .state('companyPublicProfileById', {
+                url: "/:locale/company_public_profile/:id",
+                controller: 'CompanyPublicProfileCtrl',
+                templateUrl: '/community/company/company_public_profile'
+            })
+            .state('companyPublicProfilesFilterByType', {
+                url: "/:locale/company_public_profile/filter/:type",
+                controller: 'CompanyPublicProfileCtrl',
+                templateUrl: '/community/company/company_public_profile'
+            })
+            .state('companyPublicProfileByIdFilteredByType', {
+                url: "/:locale/company_public_profile/:id/filter/:type",
+                controller: 'CompanyPublicProfileCtrl',
+                templateUrl: '/community/company/company_public_profile'
+            })
+            .state('services', {
+                url: "/:locale/services",
+                controller: 'ServiceCtrl',
+                templateUrl: '/community/company/add_service'
+            })
+            .state('serviceEditByServiceId', {
+                url: "/:locale/service/edit/:serviceId",
+                controller: 'ServiceCtrl',
+                templateUrl: '/community/company/add_service'
+            })
+            .state('addSupplyChain', {
+                url: "/:locale/add_supply_chain",
+                controller: 'SupplyChainCtrl',
+                templateUrl: '/community/company/add_supply_chain'
+            })
+            .state('addDocumentDefinitions', {
+                url: "/:locale/add_document_definitions",
+                controller: 'DocumentDefinitionsCtrl',
+                templateUrl: '/community/company/add_document_definition'
+            })
+            .state('companyDocuments', {
+                url: "/:locale/company_documents",
+                controller: 'CompanyDocumentCtrl',
+                templateUrl: '/community/company/add_company_document'
+            })
+            .state('companyDocumentEditByDocumentId', {
+                url: "/:locale/company_document/edit/:documentId",
+                controller: 'CompanyDocumentCtrl',
+                templateUrl: '/community/company/add_company_document'
+            })
+            .state('assignRequirements', {
+                url: "/:locale/assign_requirements",
+                controller: 'RequirementAssignmentCtrl',
+                templateUrl: '/community/company/assign_requirements'
+            })
+            .state('supplierById', {
+                url: "/:locale/supplier/:supplierId",
+                controller: 'SupplierCtrl',
+                templateUrl: '/community/company/supplier'
+            })
+            .state('buyerById', {
+                url: "/:locale/buyer/:buyerId",
+                controller: 'BuyerCtrl',
+                templateUrl: '/community/company/buyer'
+            });
+        /*.
+         otherwise({redirectTo: '/'})*/
+    }
+    ])
 
 });
