@@ -1,6 +1,19 @@
-(function() {	
+'use strict';
 
-	angular.module('company').controller('CompanyFolderCtrl', ['$rootScope', '$scope', '$filter', 'UserService', 'CompanyFolderService', 'ss_alert', '$translate', 'ui', '$http', '$timeout',
+/**
+ * This file is part of the Greenfence package.
+ *
+ * (c) Ivan Proskuryakov
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @name            GreenfenceCompany
+ * @description     ...
+ */
+
+define(['app'], function (app) {
+	app.controller('CompanyFolderCtrl', ['$rootScope', '$scope', '$filter', 'UserService', 'CompanyFolderService', 'ss_alert', '$translate', 'ui', '$http', '$timeout',
 		function($rootScope, $scope, $filter, UserService, CompanyFolderService,  ss_alert, $translate, ui, $http, $timeout) {
 	    	
 	    	var authorId = $('#user_id').val()
@@ -30,4 +43,4 @@
 		}
 	])
 
-})();
+});

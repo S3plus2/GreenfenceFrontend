@@ -1,6 +1,19 @@
-(function() {
+'use strict';
 
-	angular.module('company').controller('CompanyDocumentCtrl', ['$rootScope', '$scope', '$compile', '$routeParams', '$location', '$translate', '$timeout', 'ss_alert', 'ui', 'CompanyDocumentService', 'CompanyFolderService',
+/**
+ * This file is part of the Greenfence package.
+ *
+ * (c) Ivan Proskuryakov
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @name            GreenfenceCompany
+ * @description     ...
+ */
+
+define(['app'], function (app) {
+	app.controller('CompanyDocumentCtrl', ['$rootScope', '$scope', '$compile', '$routeParams', '$location', '$translate', '$timeout', 'ss_alert', 'ui', 'CompanyDocumentService', 'CompanyFolderService',
 		function($rootScope, $scope, $compile, $routeParams, $location, $translate, $timeout, ss_alert, ui, CompanyDocumentService, CompanyFolderService) {
 			
 			ui.collapse_butt_with_dom($(document))
@@ -78,7 +91,7 @@
 	        $scope.files_counter = 1;
 
 			$scope.attach_multiple_files = function(event) {
-				fileTemplate = '<dl class="form_cell form_cell_v1_mod"><dt class="form_c_hline form_v1_mod hline_hide_mod"><label for="Browse_files">Browse files</label></dt><dd class="form_c_f_w form_v1_mod hline_hide_mod"><input type="file" id="Browse_files" ng-model="document.document_files_attributes[' + $scope.files_counter + '].file" base-sixty-four-input placeholder="Browse files" class="f_c_field default_mod file_mod"><span class="f_c_field_file_field"><span class="f_c_field_file_text">{{document.document_files_attributes[' + $scope.files_counter + '].file.filename || "Browse files"}}</span><span class="f_c_field_file_butt">Choose File</span></span></dd></dl>';
+				var fileTemplate = '<dl class="form_cell form_cell_v1_mod"><dt class="form_c_hline form_v1_mod hline_hide_mod"><label for="Browse_files">Browse files</label></dt><dd class="form_c_f_w form_v1_mod hline_hide_mod"><input type="file" id="Browse_files" ng-model="document.document_files_attributes[' + $scope.files_counter + '].file" base-sixty-four-input placeholder="Browse files" class="f_c_field default_mod file_mod"><span class="f_c_field_file_field"><span class="f_c_field_file_text">{{document.document_files_attributes[' + $scope.files_counter + '].file.filename || "Browse files"}}</span><span class="f_c_field_file_butt">Choose File</span></span></dd></dl>';
 				$scope.files_counter++
 				var	parent = $(event.srcElement).closest('.add_info_form_block').find('.add_info_form_w')
 				parent.append(fileTemplate)
@@ -124,4 +137,4 @@
 		}
 	])
 
-})();
+});
