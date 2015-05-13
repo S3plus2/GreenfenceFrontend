@@ -89,6 +89,7 @@ require.config({
         './Greenfence/Homepage/GreenfenceHomepage',
         './Greenfence/User/GreenfenceUser',
         './Greenfence/Message/GreenfenceMessage',
+        './Greenfence/Search/GreenfenceSearch',
         'bootstrap',
         'base.sixty.four',
         'utils'

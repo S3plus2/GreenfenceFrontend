@@ -5,9 +5,10 @@
             <label for="search">Search for facilities, products, employees etc...</label>
         </dt>
         <dd class="form_c_f_w form_v1_mod hline_hide_mod header_mod">
-            <input type="text" id="search" placeholder="Search for facilities, products, employees etc..." class="f_c_field second_mod header_mod "/>
+            <input type="text" id="search" ng-model="query" placeholder="Search for facilities, products, employees etc..." class="f_c_field second_mod header_mod " gf-enter="search(query)"/>
         </dd>
-    </dl><a href="messages_center.html" title="Messaging Center" class="user_menu_msg_center_butt"></a>
+    </dl>
+    <a ui-sref="messageCenter({locale: 'en'})" title="Messaging Center" class="user_menu_msg_center_butt"></a>
     <nav class="user_menu_block">
         <div class="user_menu_butt">Menu<span class="user_menu_butt_decor"></span></div>
         <div class="user_menu_w">
