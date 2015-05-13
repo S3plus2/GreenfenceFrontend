@@ -17,7 +17,6 @@ define(['app'], function (app) {
         $stateProvider
             .state("homepage", {
                 url: "/:locale/",
-                templateUrl: '/app/Greenfence/Homepage/views/homepage.html',
                 controller: 'HomepageCtrl'
             });
     }]);

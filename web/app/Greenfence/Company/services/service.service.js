@@ -28,4 +28,4 @@ define(['app'], function (app) {
                 });
         }
     ])
-}());
+});

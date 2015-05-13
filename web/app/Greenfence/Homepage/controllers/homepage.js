@@ -13,8 +13,11 @@
  */
 
 define(['app'], function (app) {
-    app.controller('HomepageCtrl', ['$location', '$scope', '$routeParams', '$rootScope', 'settingsService', 'Environment',
-        function ($location, $scope, $routeParams, $rootScope, settingsService, Environment) {
-            $scope.content = 'homepage';
+    app.controller('HomepageCtrl', ['$location', '$scope', '$routeParams', '$rootScope', '$state', 'Environment',
+        function ($location, $scope, $routeParams, $rootScope, $state, Environment) {
+
+            var locale = Environment.settings.locale.primary;
+            $state.transitionTo('userEditProfile', {locale: locale});
+
         }]);
 });

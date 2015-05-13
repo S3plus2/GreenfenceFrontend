@@ -37,4 +37,4 @@ define(['app'], function (app) {
             );
         }
     ])
-}());
+});

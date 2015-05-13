@@ -116,4 +116,4 @@ define(['app'], function (app) {
             }
         }
     ])
-})();
+});
