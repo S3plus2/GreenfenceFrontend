@@ -33,11 +33,12 @@ define(['app'], function (app) {
 			ui.collapse_butt_with_dom($(document))
 
 			$scope.$parent.template = {
-				header : '/community/common/header',
-				slider: '/app/Greenfence/User/views/slider.html',
-				rightmenu: '/app/Greenfence/User/views/rightmenu.html',
+				//header : '/community/common/header',
+				//slider: '/app/Greenfence/User/views/slider.html',
+				rightmenu: '/app/Greenfence/User/views/parts/right_columnt.html',
 				footer: ''
-			}
+			};
+
             //
 			//$scope.job_titles = [
 			//	{name: "Auditor"},
