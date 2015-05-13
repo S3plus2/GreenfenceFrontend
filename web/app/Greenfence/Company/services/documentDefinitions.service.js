@@ -13,13 +13,16 @@
  */
 
 define(['app'], function (app) {
-    app.factory('DocumentDefinitionsService', ['$resource', function ($resource) {
-        return $resource('/api/v1.0/community/document_definitions.json',
-            {}, {
-                'getDocumentDefinitionByCompany': {
-                    method: 'GET',
-                    url: '/api/v1.0/community/document_definitions/document_definition_by_company.json'
-                }
-            });
-    }])
+    app.factory('DocumentDefinitionsService', ['$resource', 'Environment',
+        function ($resource, Environment) {
+            var api = Environment.settings.api;
+
+            return $resource(api + '/api/v1.0/community/document_definitions.json',
+                {}, {
+                    'getDocumentDefinitionByCompany': {
+                        method: 'GET',
+                        url: api + '/api/v1.0/community/document_definitions/document_definition_by_company.json'
+                    }
+                });
+        }])
 });

@@ -65,12 +65,12 @@ define(['app'], function (app) {
                     id: $rootScope.current_company.id,
                     type: "Company"
                 }).$promise.then(function (data) {
-                    $scope.buyer_products = data
-                    $timeout(function () {
-                        ui.multi_select_with_dom($('#buyer_products')).multiselect("refresh")
-                        $('.form_cell_v1_mod.select_buyer_product').css("display", "block");
-                    }, 500);
-                })
+                        $scope.buyer_products = data
+                        $timeout(function () {
+                            ui.multi_select_with_dom($('#buyer_products')).multiselect("refresh")
+                            $('.form_cell_v1_mod.select_buyer_product').css("display", "block");
+                        }, 500);
+                    })
             }
 
             $scope.inviteSupplier = function (company) {

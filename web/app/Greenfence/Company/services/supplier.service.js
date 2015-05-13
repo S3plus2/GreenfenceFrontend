@@ -13,14 +13,17 @@
  */
 
 define(['app'], function (app) {
-    app.factory('SupplierService', ['$resource', function ($resource) {
-        return $resource('/api/v1.0/community/requirement_assignments.json',
-            {}, {
-                'getAssignedRequirements': {
-                    method: 'GET',
-                    url: '/api/v1.0/community/requirement_assignments/assigned_requirements.json'
-                }
-            });
-    }])
+    app.factory('SupplierService', ['$resource', 'Environment',
+        function ($resource, Environment) {
+            var api = Environment.settings.api;
+
+            return $resource(api + '/api/v1.0/community/requirement_assignments.json',
+                {}, {
+                    'getAssignedRequirements': {
+                        method: 'GET',
+                        url: api + '/api/v1.0/community/requirement_assignments/assigned_requirements.json'
+                    }
+                });
+        }])
 
 })();

@@ -13,9 +13,11 @@
  */
 
 define(['app'], function (app) {
-    app.factory('CompanyFolderService', ['$resource',
-        function ($resource) {
-            return $resource('/api/v1.0/community/company_folder/:id.json',
+    app.factory('CompanyFolderService', ['$resource', 'Environment',
+        function ($resource, Environment) {
+            var api = Environment.settings.api;
+
+            return $resource(api + '/api/v1.0/community/company_folder/:id.json',
                 {}, {}
             )
         }

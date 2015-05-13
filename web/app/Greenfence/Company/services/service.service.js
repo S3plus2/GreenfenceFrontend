@@ -13,15 +13,17 @@
  */
 
 define(['app'], function (app) {
-    app.factory('ServiceService', ['$resource',
-        function ($resource) {
-            return $resource('/api/v1.0/community/services/:id.json',
+    app.factory('ServiceService', ['$resource', 'Environment',
+        function ($resource, Environment) {
+            var api = Environment.settings.api;
+
+            return $resource(api + '/api/v1.0/community/services/:id.json',
                 {}, {
                     'update': {method: 'PUT'},
                     'companyServices': {
                         method: 'GET',
                         isArray: true,
-                        url: '/api/v1.0/community/services/company_services.json'
+                        url: api + '/api/v1.0/community/services/company_services.json'
                     }
                 });
         }

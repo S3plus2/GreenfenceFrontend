@@ -13,11 +13,16 @@
  */
 
 define(['app'], function (app) {
-    app.factory('ShareCompanyDocumentService', ['$resource',
-        function ($resource) {
+    app.factory('ShareCompanyDocumentService', ['$resource', 'Environment',
+        function ($resource, Environment) {
+            var api = Environment.settings.api;
+
             return $resource('/api/v1.0/community/company_document/:id.json',
                 {}, {
-                    'shareDocument': {method: 'POST', url: '/api/v1.0/community/company_document/share_document.json'}
+                    'shareDocument': {
+                        method: 'POST',
+                        url: api + '/api/v1.0/community/company_document/share_document.json'
+                    }
                 }
             )
         }

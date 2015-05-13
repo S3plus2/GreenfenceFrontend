@@ -34,12 +34,12 @@ define(['app'], function (app) {
                     id: $routeParams.supplierId,
                     type: "Supplier"
                 }).$promise.then(function (data) {
-                    $scope.assigned_requirements = data.supply_chain_requirement
-                    for (var i = 0; i < $scope.assigned_requirements.length; i++) {
-                        attach_multiple_rows($scope.assigned_requirements[i])
-                    }
-                    $compile($('.add_info_form_block').find('.add_info_form_w'))($scope);
-                })
+                        $scope.assigned_requirements = data.supply_chain_requirement
+                        for (var i = 0; i < $scope.assigned_requirements.length; i++) {
+                            attach_multiple_rows($scope.assigned_requirements[i])
+                        }
+                        $compile($('.add_info_form_block').find('.add_info_form_w'))($scope);
+                    })
             }
 
             counter = 0;
