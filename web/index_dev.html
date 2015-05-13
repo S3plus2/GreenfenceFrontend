@@ -44,7 +44,9 @@
             <div ng-include="'/app/Greenfence/User/views/parts/profile_heading.html'"></div>
             <div class="row_wrap layuot_mod_1">
                 <!--<div class="main_row layuot_mod_1" ng:view></div>-->
-                <div id="dynamic-content" ui-view></div>
+                <div class="main_row layuot_mod_1 msg_list_wrap">
+                    <div id="dynamic-content" ui-view></div>
+                </div>
                 <div class="secondary_row layuot_mod_1">
                     <ng-include src="template.rightmenu"></ng-include>
                 </div>

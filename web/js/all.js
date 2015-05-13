@@ -707,9 +707,6 @@ function messages_center_f() {
 		return false;
 	});
 
-
-
-
 	$(".section_menu_link.click_mod").on('click', function () {
 		var $this = $(this);
 		if ($this.hasClass('active_mod')) {

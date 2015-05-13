@@ -111,6 +111,10 @@ define(['app'], function (app) {
             //    $(document).trigger('ready_view');
             //    console.log('message time 2');
             //}, 2000);
+            $timeout(function () {
+                global_f();
+                about_page_f();
+            });
         }
     ]);
 
