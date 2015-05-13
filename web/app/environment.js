@@ -20,7 +20,7 @@ define(['angular'],
             .service('Environment', function () {
                 return {
                     settings: {
-                        api: 'http://api.aisel.dev/api',
+                        api: 'http://localhost:5100',
                         locale: {
                             "primary": 'en',
                             "available": ['en']

@@ -13,23 +13,26 @@
  */
 
 define(['app'], function (app) {
-    app.factory('MessageService', ['$resource', function ($resource) {
-        return $resource('/api/v1.0/community/communications.json',
-            {}, {
-                'inMessages': {
-                    method: 'GET',
-                    isArray: true,
-                    url: '/api/v1.0/community/communications/in_messages.json'
-                },
-                'contactsAndGroups': {
-                    method: 'GET',
-                    isArray: true,
-                    url: '/api/v1.0/community/communications/contacts_and_groups.json'
-                },
-                'allUsers': {method: 'GET', isArray: true, url: '/api/v1.0/community/communications/all_users.json'}
-            }
-        )
-    }
+    app.factory('MessageService', ['$resource', 'Environment',
+        function ($resource, Environment) {
+            var api = Environment.settings.api;
+
+            return $resource(api + '/api/v1.0/community/communications.json',
+                {}, {
+                    'inMessages': {
+                        method: 'GET',
+                        isArray: true,
+                        url: api + '/api/v1.0/community/communications/in_messages.json'
+                    },
+                    'contactsAndGroups': {
+                        method: 'GET',
+                        isArray: true,
+                        url: api + '/api/v1.0/community/communications/contacts_and_groups.json'
+                    },
+                    'allUsers': {method: 'GET', isArray: true, url: api + '/api/v1.0/community/communications/all_users.json'}
+                }
+            )
+        }
     ])
 
 });

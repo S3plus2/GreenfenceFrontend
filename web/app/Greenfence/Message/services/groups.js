@@ -13,11 +13,14 @@
  */
 
 define(['app'], function (app) {
-    app.factory('GroupService', ['$resource', function ($resource) {
-        return $resource('/api/v1.0/community/groups.json',
-            {}, {}
-        )
-    }
+    app.factory('GroupService', ['$resource', 'Environment',
+        function ($resource, Environment) {
+            var api = Environment.settings.api;
+
+            return $resource(api + '/api/v1.0/community/groups.json',
+                {}, {}
+            )
+        }
     ])
 
 });
