@@ -102,9 +102,9 @@ $(document).ready(function ($) {
 		about_page_f();
 	}
 
-	if (body_var.hasClass('messages_center_page')) {
+	//if (body_var.hasClass('messages_center_page')) {
 		messages_center_f();
-	}
+	//}
 
 	if (body_var.hasClass('map_view_page')) {
 		map_page_f();
@@ -145,15 +145,15 @@ function global_f() {
 	global_array.user_menu_block = $('.user_menu_block');
 
 
-	global_array.user_menu_butt.on('click', function () {
+	body_var.on('click','.user_menu_butt', function () {
 		var $this = $(this);
 		if ($this.hasClass('active_mod')) {
 			$this.removeClass('active_mod');
-			global_array.user_menu_block.removeClass('active_mod');
+			$('.user_menu_block').removeClass('active_mod');
 		}
 		else {
 			$this.addClass('active_mod');
-			global_array.user_menu_block.addClass('active_mod');
+			$('.user_menu_block').addClass('active_mod');
 		}
 	});
 
@@ -694,14 +694,14 @@ function messages_center_f() {
 	messages_center.compose_msg_butt = $('.compose_msg_butt');
 	messages_center.add_msg_block = $('.add_msg_block');
 
-	messages_center.compose_msg_butt.on('click', function () {
+	body_var.on('click','.compose_msg_butt', function () {
 		var $this = $(this);
 		if ($this.hasClass('active_mod')) {
-			messages_center.add_msg_block.slideUp(400);
+			$('.add_msg_block').slideUp(400);
 			$this.removeClass('active_mod');
 		}
 		else {
-			messages_center.add_msg_block.slideDown(400);
+			$('.add_msg_block').slideDown(400);
 			$this.addClass('active_mod');
 		}
 		return false;
