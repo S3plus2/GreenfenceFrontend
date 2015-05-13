@@ -19,10 +19,10 @@ define(['app'], function (app) {
             function ($http, $rootScope, Environment) {
                 return {
                     getApplicationConfig: function () {
-                        var locale = Environment.currentLocale();
-                        var url = Environment.settings.api + '/' + locale + '/config/';
+                        //var locale = Environment.currentLocale();
+                        //var url = Environment.settings.api + '/' + locale + '/config/';
                         // console.log(url);
-                        return $http.get(url);
+                        //return $http.get(url);
                     }
                 };
             }

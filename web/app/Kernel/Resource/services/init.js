@@ -25,54 +25,32 @@ define(['app'], function (app) {
                       $rootScope,
                       settingsService,
                       Environment,
-                      $timeout
-            ) {
+                      $timeout) {
                 return {
                     launch: function () {
+                        console.log('----------- App Loaded! -----------');
 
-                        // Load settings data
-                        settingsService.getApplicationConfig().success(
-                            function (data, status) {
+                        // Init
+                        $timeout(function () {
+                            global_f();
+                        });
 
-                                var settings = data.settings[Environment.currentLocale()];
+                        // Hook for on route change
+                        $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+                            console.log('State Change ...');
 
-                                $rootScope.footer = settings.content.footerContent;
-                                $rootScope.disqusShortname = settings.disqus.shortname;
-                                $rootScope.disqusStatus = false;
-                                $rootScope.currency = settings.general.currency;
-                                $rootScope.paymentMethods = settings.general.paymentMethods;
+                            $timeout(function () {
+                                global_f();
+                            });
 
-                                console.log('----------- Aisel Loaded! -----------');
-                                var setLocale = function () {
-                                    $rootScope.availableLocales = Environment.settings.locale.available;
-                                    $rootScope.locale = Environment.currentLocale();
-                                }
-                                var setMetaData = function () {
-                                    $rootScope.pageTitle = settings.meta.defaultMetaTitle;
-                                    $rootScope.metaDescription = settings.meta.defaultMetaDescription;
-                                    $rootScope.metaKeywords = settings.meta.defaultMetaKeywords;
-                                }
+                        });
 
-                                // Init
-                                setLocale();
-                                setMetaData();
-                                $timeout(function(){
-                                    global_f();
-                                });
-
-                                // Hook for on route change
-                                $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
-                                    console.log('State Change ...');
-                                    setLocale();
-                                    setMetaData();
-
-                                    $timeout(function(){
-                                        global_f();
-                                    });
-
-                                });
-                            }
-                        );
+                        //// Load settings data
+                        //settingsService.getApplicationConfig().success(
+                        //    function (data, status) {
+                        //
+                        //    }
+                        //);
                     }
                 }
             }
