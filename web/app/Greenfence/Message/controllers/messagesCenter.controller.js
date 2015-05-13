@@ -114,6 +114,7 @@ define(['app'], function (app) {
             $timeout(function () {
                 global_f();
                 about_page_f();
+				messages_center_f();
             });
         }
     ]);

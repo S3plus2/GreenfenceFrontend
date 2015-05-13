@@ -1,8 +1,181 @@
 <!-- jQuery: Start-->
-    <script type="text/javascript">
-        if (typeof jQuery != 'undefined') {
-            console.log('jQuery version: ' + jQuery.fn.jquery);
-            console.log('jQuery UI version: ' + $.ui.version);
-        }
-    </script>
-<!-- jQuery: End-->
+<script type="text/javascript">
+	if (typeof jQuery != 'undefined') {
+		console.log('jQuery version: ' + jQuery.fn.jquery);
+		console.log('jQuery UI version: ' + $.ui.version);
+	}
+</script><!-- jQuery: End-->
+
+<div id="invite_users" style="display:none" title="Invite Users">
+	<div class="dialog_content">
+		<div class="tabs_v1">
+			<ul class="dialog_tab_list">
+				<li class="dialog_tab_l_item">
+					<a href="#user_invite_tab_1" title="" class="dialog_tab_1_butt">Invite Users</a>
+				</li>
+				<li class="dialog_tab_l_item">
+					<a href="#user_invite_tab_2" title="" class="dialog_tab_1_butt">Invited</a>
+				</li>
+			</ul>
+			<div id="user_invite_tab_1" class="tab_block">
+				<div class="dialog_form">
+					<dl class="form_cell form_cell_v1_mod">
+						<dt class="form_c_hline form_v1_mod hline_hide_mod">
+							<label for="Enter_name_of_user1">Enter name of user</label>
+						</dt>
+						<dd class="form_c_f_w form_v1_mod hline_hide_mod">
+							<input type="text" id="Enter_name_of_user1" placeholder="Enter name of user" class="f_c_field default_mod ">
+						</dd>
+					</dl>
+					<dl class="form_cell form_cell_v1_mod clone_target">
+						<dt class="form_c_hline form_v1_mod hline_hide_mod">
+							<label for="Enter_email_of_user">Enter email of user</label>
+						</dt>
+						<dd class="form_c_f_w form_v1_mod hline_hide_mod">
+							<input type="text" id="Enter_email_of_user" placeholder="Enter email of user" class="f_c_field default_mod import_contacts ">
+						</dd>
+					</dl>
+					<div class="dialog_form_inject_block"></div>
+					<div class="invite_another_user_butt">Invite Another User</div>
+				</div>
+				<footer class="dialog_footer">
+					<div class="dialog_cancel_butt">Cancel</div>
+					<div class="send_invite_butt">Send an Invite</div>
+				</footer>
+			</div>
+			<div id="user_invite_tab_2" class="tab_block">
+				<ul class="users_list added_mod invite_user_mod">
+					<li class="users_l_item added_mod invite_user_mod">
+						<div class="user_block msg_mod popup_mod ">
+							<div class="user_avatar_w msg_mod popup_mod ">
+								<img src="i/space.jpg" alt="Michael Abehsera" class="user_avatar_img msg_mod popup_mod">
+							</div>
+							<div class="user_name msg_mod popup_mod">Michael Abehsera</div>
+						</div>
+						<div class="resend_invite_butt">Resend invite</div>
+					</li>
+					<li class="users_l_item added_mod invite_user_mod">
+						<div class="user_block msg_mod popup_mod ">
+							<div class="user_avatar_w msg_mod popup_mod ">
+								<img src="i/space.jpg" alt="John Allen" class="user_avatar_img msg_mod popup_mod">
+							</div>
+							<div class="user_name msg_mod popup_mod">John Allen</div>
+						</div>
+						<div class="signed_up_butt">Signed up</div>
+					</li>
+					<li class="users_l_item added_mod invite_user_mod">
+						<div class="user_block msg_mod popup_mod ">
+							<div class="user_avatar_w msg_mod popup_mod ">
+								<img src="i/space.jpg" alt="Andrey" class="user_avatar_img msg_mod popup_mod">
+							</div>
+							<div class="user_name msg_mod popup_mod">Andrey</div>
+						</div>
+						<div class="resend_invite_butt">Resend invite</div>
+					</li>
+				</ul>
+				<footer class="dialog_footer">
+					<div class="dialog_cancel_butt">Cancel</div>
+				</footer>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="create_new_group" style="display:none" title="Create a New Group">
+	<div class="dialog_content">
+		<div class="dialog_form">
+			<dl class="form_cell form_cell_v1_mod">
+				<dt class="form_c_hline form_v1_mod hline_hide_mod">
+					<label for="Enter_name_of_group">Enter name of group</label>
+				</dt>
+				<dd class="form_c_f_w form_v1_mod hline_hide_mod">
+					<input type="text" id="Enter_name_of_group" placeholder="Enter name of group" class="f_c_field default_mod ">
+				</dd>
+			</dl>
+			<dl class="form_cell form_cell_v1_mod">
+				<dt class="form_c_hline form_v1_mod hline_hide_mod">
+					<label for="Enter_name_of_user">Enter name of user</label>
+				</dt>
+				<dd class="form_c_f_w form_v1_mod hline_hide_mod">
+					<input type="text" id="Enter_name_of_user" placeholder="Enter name of user" class="f_c_field default_mod ">
+				</dd>
+			</dl>
+		</div>
+		<div class="users_list_title add_mod">Or from list</div>
+		<ul class="users_list add_mod">
+			<li class="users_l_item add_mod">
+				<div class="user_block small_mod hover_mod ">
+					<div class="user_avatar_w small_mod hover_mod ">
+						<img src="i/space.jpg" alt="Michael Abehsera" class="user_avatar_img small_mod hover_mod">
+					</div>
+					<div class="user_name small_mod hover_mod">Michael Abehsera</div>
+				</div>
+				<div class="user_add_butt">Add</div>
+			</li>
+			<li class="users_l_item add_mod">
+				<div class="user_block small_mod hover_mod ">
+					<div class="user_avatar_w small_mod hover_mod ">
+						<img src="i/space.jpg" alt="Michael Abehsera" class="user_avatar_img small_mod hover_mod">
+					</div>
+					<div class="user_name small_mod hover_mod">Michael Abehsera</div>
+				</div>
+				<div class="user_add_butt">Add</div>
+			</li>
+			<li class="users_l_item add_mod">
+				<div class="user_block small_mod hover_mod ">
+					<div class="user_avatar_w small_mod hover_mod ">
+						<img src="i/space.jpg" alt="Michael Abehsera" class="user_avatar_img small_mod hover_mod">
+					</div>
+					<div class="user_name small_mod hover_mod">Michael Abehsera</div>
+				</div>
+				<div class="user_add_butt">Add</div>
+			</li>
+		</ul>
+		<div class="added_el_block">
+			<div class="users_list_title added_mod">2 Users Added</div>
+			<ul class="users_list added_mod">
+				<li class="users_l_item added_mod">
+					<div class="user_block small_mod hover_mod ">
+						<div class="user_avatar_w small_mod hover_mod ">
+							<img src="i/space.jpg" alt="Michael Abehsera" class="user_avatar_img small_mod hover_mod">
+						</div>
+						<div class="user_name small_mod hover_mod">Michael Abehsera</div>
+					</div>
+					<div class="user_remove_butt">Remove</div>
+				</li>
+				<li class="users_l_item added_mod">
+					<div class="user_block small_mod hover_mod ">
+						<div class="user_avatar_w small_mod hover_mod ">
+							<img src="i/space.jpg" alt="Michael Abehsera" class="user_avatar_img small_mod hover_mod">
+						</div>
+						<div class="user_name small_mod hover_mod">Michael Abehsera</div>
+					</div>
+					<div class="user_remove_butt">Remove</div>
+				</li>
+			</ul>
+		</div>
+		<dl class="options_block">
+			<dt class="options_b_hline">Privacy Options</dt>
+			<dd class="options_b_value_item">
+				<div class="options_b_value_hline">Make this group:</div>
+				<ul class="options_b_value_list">
+					<li class="options_b_value_l_item">
+						<label class="lbl_rb_ch_block lbl_rb_ch_default_mod">
+							<input name="access" type="radio" checked="checked" class="lbl_inp_rb_ch">
+							<span class="lbl_rb_ch_text lbl_rb_ch_t_default_mod lbl_rb_ch_t_default_green_white_mod">Private</span>
+						</label>
+					</li>
+					<li class="options_b_value_l_item">
+						<label class="lbl_rb_ch_block lbl_rb_ch_default_mod">
+							<input name="access" type="radio" class="lbl_inp_rb_ch">
+							<span class="lbl_rb_ch_text lbl_rb_ch_t_default_mod lbl_rb_ch_t_default_green_white_mod">Public</span>
+						</label>
+					</li>
+				</ul>
+			</dd>
+		</dl>
+	</div>
+	<footer class="dialog_footer">
+		<div class="dialog_cancel_butt">Cancel</div>
+		<div class="create_group_butt">Create Group</div>
+	</footer>
+</div>

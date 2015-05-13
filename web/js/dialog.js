@@ -23,6 +23,7 @@ function dialog(dialog_id, dialog_class, dialog_trigger_id, dialog_active_class,
 			appendTo: dialog_wrap,
 			width: dialog_width,
 			open: function (event, ui) {
+				console.log(this);
 				jQuery(this).parent()
 						.on('mouseenter', function () {
 							body_var.addClass('dialog_hover');
@@ -67,7 +68,8 @@ function dialog(dialog_id, dialog_class, dialog_trigger_id, dialog_active_class,
 
 		});
 		if (dialog_trigger_ != false) {
-			dialog_trigger_.on('click', function () {
+			console.log(dialog_trigger_id);
+			body_var.on('click',dialog_trigger_id, function () {
 				if (jQuery(this).hasClass(dialog_active_class)) {
 					if (body_var.hasClass('develop_mod')) {
 						console.log('click_close');
@@ -96,6 +98,7 @@ function dialog(dialog_id, dialog_class, dialog_trigger_id, dialog_active_class,
 			dialogClass: dialog_class,
 			width: dialog_width,
 			open: function (event, ui) {
+				console.log(this);
 				body_var.addClass('dialog_regular_open');
 			},
 			close: function (event, ui) {
@@ -104,7 +107,8 @@ function dialog(dialog_id, dialog_class, dialog_trigger_id, dialog_active_class,
 		});
 
 		if (dialog_trigger_ != false) {
-			dialog_trigger_.on('click', function () {
+			console.log(dialog_trigger_id);
+			body_var.on('click',dialog_trigger_id, function () {
 				dialog_.dialog('open').DialogFixed(modal_height);
 				return false;
 			});
@@ -128,7 +132,11 @@ jQuery.fn.DialogFixed = function (height) {
 	element.css('position', 'fixed');
 
 	if (height != null) {
-		element.css('top', (global_window_Height / 2) - (height / 2));
+		if(global_window_Height > height){
+			element.css('top', (global_window_Height / 2) - (height / 2));
+		}else{
+			element.css('top', 0);
+		}
 //		console.log(global_window_Height);
 //		console.log(height);
 	}
