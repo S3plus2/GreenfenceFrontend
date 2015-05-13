@@ -29,7 +29,11 @@ define(['app'], function (app) {
                         isArray: true,
                         url: api + '/api/v1.0/community/communications/contacts_and_groups.json'
                     },
-                    'allUsers': {method: 'GET', isArray: true, url: api + '/api/v1.0/community/communications/all_users.json'}
+                    'allUsers': {
+                        method: 'GET',
+                        isArray: true,
+                        url: api + '/api/v1.0/community/communications/all_users.json'
+                    }
                 }
             )
         }

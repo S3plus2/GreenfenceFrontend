@@ -13,9 +13,11 @@
  */
 
 define(['app'], function (app) {
-    app.factory('SearchService', ['$resource',
-        function ($resource) {
-            return $resource('/api/v1.0/community/search.json',
+    app.factory('SearchService', ['$resource', 'Environment',
+        function ($resource, Environment) {
+            var api = Environment.settings.api;
+
+            return $resource(api + '/api/v1.0/community/search.json',
                 {}, {}
             )
         }

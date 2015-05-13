@@ -113,27 +113,27 @@ define(['app'], function (app) {
                         sub_filter_min: params.sub_filter_min,
                         sub_filter_max: params.sub_filter_max
                     }).$promise.then(function (data) {
-                        if (params.f == null && params.l == null && data[0]) {
-                            $rootScope.search = {
-                                companies: data[0].company_results,
-                                operations: data[0].operation_results,
-                                users: data[0].user_results,
-                                services: data[0].service_results
+                            if (params.f == null && params.l == null && data[0]) {
+                                $rootScope.search = {
+                                    companies: data[0].company_results,
+                                    operations: data[0].operation_results,
+                                    users: data[0].user_results,
+                                    services: data[0].service_results
+                                }
+                            } else if (params.f == null && params.l == null) {
+                                $rootScope.search = {
+                                    companies: 0,
+                                    operations: 0,
+                                    users: 0,
+                                    services: 0
+                                }
                             }
-                        } else if (params.f == null && params.l == null) {
-                            $rootScope.search = {
-                                companies: 0,
-                                operations: 0,
-                                users: 0,
-                                services: 0
+                            if (data[0]) {
+                                pagination(data[0])
                             }
-                        }
-                        if (data[0]) {
-                            pagination(data[0])
-                        }
-                        $rootScope.$emit('SEARCH')
-                        $scope.results = data
-                    })
+                            $rootScope.$emit('SEARCH')
+                            $scope.results = data
+                        })
                 }
 
                 var pagination = function (data) {

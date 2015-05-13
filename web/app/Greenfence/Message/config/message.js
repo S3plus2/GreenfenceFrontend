@@ -17,7 +17,7 @@ define(['app'], function (app) {
         $stateProvider
             .state("messageCenter", {
                 url: "/:locale/messages_center",
-                templateUrl: '/app/Greenfence/Homepage/views/messages_center.html',
+                templateUrl: '/app/Greenfence/Message/views/messages_center.html',
                 controller: 'MessageCenterCtrl'
             });
     }]);
