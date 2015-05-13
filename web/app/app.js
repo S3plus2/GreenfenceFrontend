@@ -31,6 +31,8 @@ define([
         'angular-ui-router', 'angular-route', 'angular-animate',
         'angular-loading-bar',
         'angular-translate',
+        'firebase',
+        'angular-firebase',
     ],
     function (angular) {
         'use strict';
@@ -41,6 +43,8 @@ define([
             'ngAnimate',
             'angular-loading-bar',
             'pascalprecht.translate',
+            'firebase',
+            //'angular-firebase',
             'environment'
         ]);
 

@@ -17,7 +17,7 @@ define([
     './config/message',
     './controllers/messagesCenter.controller',
     './services/groups',
-    './services/messages',
+    './services/messages'
 ], function (app) {
     console.log('Message module loaded ...');
 });

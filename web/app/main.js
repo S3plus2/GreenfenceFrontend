@@ -37,6 +37,9 @@ require.config({
         'angular-gravatar': '../bower_components/angular-gravatar/build/angular-gravatar',
         'angular-translate': '../bower_components/angular-translate/angular-translate.min',
         'angular-disqus': '../bower_components/angular-disqus/src/angular-disqus',
+        'firebase': '../bower_components/firebase/firebase',
+        'angular-firebase': '../bower_components/angularfire/dist/angularfire.min',
+
         'jQuery-chosen': '../js/chosen.jquery.min',
         'jQuery-dialog': '../js/dialog',
         'jQuery-snabbt': '../js/snabbt.min',
@@ -51,6 +54,8 @@ require.config({
         'angular-loading-bar': ['angular'],
         'angular-animate': ['angular'],
         'angular-ui-router': ['angular'],
+        'firebase': ['angular'],
+        'angular-firebase': ['angular'],
         'angular': {'exports': 'angular', deps: ['jQuery']},
 
         'jQuery': {'exports': 'jQuery'},
@@ -83,6 +88,7 @@ require.config({
         './Kernel/Resource/KernelResource',
         './Greenfence/Homepage/GreenfenceHomepage',
         './Greenfence/User/GreenfenceUser',
+        './Greenfence/Message/GreenfenceMessage',
         'bootstrap',
         'base.sixty.four',
         'utils'
