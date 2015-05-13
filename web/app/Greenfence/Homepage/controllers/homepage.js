@@ -16,6 +16,5 @@ define(['app'], function (app) {
     app.controller('HomepageCtrl', ['$location', '$scope', '$routeParams', '$rootScope', 'settingsService', 'Environment',
         function ($location, $scope, $routeParams, $rootScope, settingsService, Environment) {
             $scope.content = 'homepage';
-
         }]);
 });
