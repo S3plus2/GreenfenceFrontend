@@ -7,7 +7,7 @@ define(['app'], function (app) {
 			$scope.$parent.template = {
 				header : '/community/common/header',
 				slider: '',
-				rightmenu: '/community/user/user_settings_rightmenu',
+				rightmenu: '/app/Greenfence/User/views/user_settings_rightmenu.html',
 				footer: ''
 			}
 
@@ -19,8 +19,6 @@ define(['app'], function (app) {
 		      { value:'operation', name:'Operation' },
 		      { value:'company', name:'Company' }
 		    ];
-
-
 
 			$scope.getRole = function(role_id){
 				CustomRoleService.get({id:role_id}).$promise.then(function(data) {
@@ -112,7 +110,7 @@ define(['app'], function (app) {
 			$scope.$parent.template = {
 				header : '/community/common/header',
 				slider: '',
-				rightmenu: '/community/user/user_settings_rightmenu',
+				rightmenu: '/app/Greenfence/User/views/user_settings_rightmenu.html',
 				footer: ''
 			}
 
@@ -162,7 +160,7 @@ define(['app'], function (app) {
 			$scope.$parent.template = {
 				header : '/community/common/header',
 				slider: '',
-				rightmenu: '/community/user/user_settings_rightmenu',
+				rightmenu: '/app/Greenfence/User/views/user_settings_rightmenu.html',
 				footer: ''
 			}
 			

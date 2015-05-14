@@ -1,0 +1,33 @@
+<div class="secondary_row layuot_mod_1" ng-controller="CompanyPublicProfileRightMenuCtrl">
+  <div class="section_menu mod_1">
+    <h2 class="section_hline">Menu</h2>
+    <ul class="section_menu_list">
+      <li class="section_menu_l_item">
+        <div class="section_menu_link hovered_1_mod" ng-click="filterType('/filter/featured')">Featured<span class="section_m_link_count">{{details.length}}</span></div>
+      </li>
+      <li class="section_menu_l_item">
+        <div class="section_menu_link hovered_1_mod" ng-click="filterType('/filter/operations')">Operations<span class="section_m_link_count">{{public_company.operations_count}}</span></div>
+      </li>
+      <li class="section_menu_l_item">
+        <div class="section_menu_link hovered_1_mod" ng-click="filterType('/filter/products')">Products<span class="section_m_link_count">{{public_company.products_count}}</span></div>
+      </li>
+      <li class="section_menu_l_item">
+        <div class="section_menu_link hovered_1_mod" ng-click="filterType('/filter/services')">Services<span class="section_m_link_count">{{public_company.services_count}}</span></div>
+      </li>
+      <li class="section_menu_l_item">
+        <div class="section_menu_link hovered_1_mod" ng-click="filterType('/filter/documents')">Certificates &amp; Documents<span class="section_m_link_count">{{documentsdata.length}}</span></div>
+      </li>
+      <li class="section_menu_l_item">
+        <div class="section_menu_link hovered_1_mod" ng-click="filterType('/filter/employees')">Employees<span class="section_m_link_count">{{public_company.employees_count}}</span></div>
+      </li>
+    </ul>
+  </div>
+  <div class="user_block about_mod ">
+    <div class="user_avatar_w about_mod "><img ng-src="{{user.user_profile_attributes.image.image.thumb.url}}" alt="{{user.name}}" class="user_avatar_img about_mod">
+    </div>
+    <div class="user_name about_mod">{{user.name}}</div>
+    <div class="user_info about_mod">{{user.user_profile.title}}</div>
+    <div class="user_second_info about_mod">Primary Contact</div>
+    <div class="user_msg_butt about_mod">Message</div>
+  </div>
+</div>

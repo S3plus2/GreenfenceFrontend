@@ -1,0 +1,300 @@
+<div class="view_container">
+  <h1 class="content_headline"><%= I18n.t('add_a_company') %></h1>
+  <div class="add_info_sub_header">
+	<div class="wizards_save_draft_butt">Save Draft</div>
+	<div class="wizards_delete_butt">Delete</div>
+  </div>
+  <div class="add_info_block">
+	<div class="add_info_header">
+	  <div class="add_info_title"> <%= I18n.t('name_of_company') %> </div>
+	  <div class="add_info_colapse_butt"></div>
+	</div>
+	<div class="add_info_content_block">
+	  <div class="add_info_content">
+		<p>{{store.name}}</p>
+	  </div>
+	  <div class="add_info_form_block">
+		<div class="add_info_form_w">
+		  <dl class="form_cell form_cell_v1_mod">
+			<dt class="form_c_hline form_v1_mod hline_hide_mod">
+			  <label for="Enter_name_of_company">Enter name of company</label>
+			</dt>
+			<dd class="form_c_f_w form_v1_mod hline_hide_mod">
+
+			  <input type="text" id="Enter_name_of_company" placeholder="<%= I18n.t('enter_name_of_company') %>" class="f_c_field default_mod " ng-model="company.name"/>
+			</dd>
+		  </dl>
+		</div>
+	  </div>
+	</div>
+  </div>
+  <div class="add_info_block">
+	<div class="add_info_header">
+	  <div class="add_info_title"><%= I18n.t('type_of_company') %> </div>
+	  <div class="add_info_colapse_butt"></div>
+	</div>
+	<div class="add_info_content_block">
+	  <div class="add_info_content">
+		<p>{{store.type}}</p>
+	  </div>
+	  <div class="add_info_form_block">
+		<div class="add_info_form_w">
+		  <dl class="form_cell form_cell_v1_mod">
+			<dt class="form_c_hline form_v1_mod hline_hide_mod">
+			  <label for="Select_type_of_company">Select type of company</label>
+			</dt>
+			<dd class="form_c_f_w form_v1_mod hline_hide_mod">
+			  <ui-select ng-model="company.type" theme="selectize" ng-disabled="store != undefined && store.id">
+                <ui-select-match placeholder="Select type of company">{{$select.selected.type}}</ui-select-match>
+                <ui-select-choices repeat="company_type.value as company_type in company_types |  filter: $select.search">
+                  <div ng-bind-html="company_type.type | highlight: $select.search"></div>
+                </ui-select-choices>
+              </ui-select>
+			</dd>
+		  </dl>
+		</div>
+	  </div>
+	</div>
+  </div>
+  <div class="add_info_block">
+	<div class="add_info_header">
+	  <div class="add_info_title"> Description</div>
+	  <div class="add_info_colapse_butt"></div>
+	</div>
+	<div class="add_info_content_block">
+	  <div class="add_info_content">
+		<p> {{store.company_profile_attributes.summary}} </p>
+	  </div>
+	  <div class="add_info_form_block">
+		<div class="add_info_form_w">
+		  <dl class="form_cell form_cell_v1_mod">
+			<dt class="form_c_hline form_v1_mod hline_hide_mod">
+			  <label for="about">Description</label>
+			</dt>
+			<dd class="form_c_f_w form_v1_mod hline_hide_mod">
+			  <textarea id="about" placeholder="Company description" class="f_c_field default_mod textarea_mod_1 " ng-model="company.company_profile_attributes.summary"></textarea>
+			</dd>
+		  </dl>
+		</div>
+	  </div>
+	</div>
+  </div>
+  <div class="add_info_block title_mod">
+	<div class="add_info_header">
+	  <div class="add_info_title">Phone number</div>
+	  <div class="add_info_colapse_butt"></div>
+	</div>
+	<div class="add_info_content_block">
+	  <div class="add_info_content">
+		<p> {{store.company_profile_attributes.phone}} </p>
+	  </div>
+	  <div class="add_info_form_block">
+		<div class="add_info_form_w">
+		  <dl class="form_cell form_cell_v1_mod">
+			<dt class="form_c_hline form_v1_mod hline_hide_mod">
+			  <label for="Enter_phone_number">Enter phone number</label>
+			</dt>
+			<dd class="form_c_f_w form_v1_mod hline_hide_mod">
+			  <input type="text" id="Enter_phone_number" placeholder="Enter phone number" class="f_c_field default_mod " ng-model="company.company_profile_attributes.phone">
+			</dd>
+		  </dl>
+		</div>
+	  </div>
+	</div>
+  </div>
+  <div class="add_info_block title_mod">
+	<div class="add_info_header">
+	  <div class="add_info_title">Website</div>
+	  <div class="add_info_colapse_butt"></div>
+	</div>
+	<div class="add_info_content_block">
+	  <div class="add_info_content">
+		<p> {{store.company_profile_attributes.website}} </p>
+	  </div>
+	  <div class="add_info_form_block">
+		<div class="add_info_form_w">
+		  <dl class="form_cell form_cell_v1_mod">
+			<dt class="form_c_hline form_v1_mod hline_hide_mod">
+			  <label for="Enter_website_link">Enter website link</label>
+			</dt>
+			<dd class="form_c_f_w form_v1_mod hline_hide_mod">
+			  <input type="text" id="Enter_website_link" placeholder="Enter website link" class="f_c_field default_mod " ng-model="company.company_profile_attributes.website">
+			</dd>
+		  </dl>
+		</div>
+
+	  </div>
+	</div>
+  </div>
+  <div class="add_info_block title_mod">
+	<div class="add_info_header">
+	  <div class="add_info_title">Email address</div>
+	  <div class="add_info_colapse_butt"></div>
+	</div>
+	<div class="add_info_content_block">
+	  <div class="add_info_content">
+		<p> {{store.company_profile_attributes.email}} </p>
+	  </div>
+	  <div class="add_info_form_block">
+		<div class="add_info_form_w">
+		  <dl class="form_cell form_cell_v1_mod">
+			<dt class="form_c_hline form_v1_mod hline_hide_mod">
+			  <label for="Enter_email_address">Enter email address</label>
+			</dt>
+			<dd class="form_c_f_w form_v1_mod hline_hide_mod">
+			  <input type="text" id="Enter_email_address" placeholder="Enter email address" class="f_c_field default_mod " ng-model="company.company_profile_attributes.email">
+			</dd>
+		  </dl>
+		</div>
+
+	  </div>
+	</div>
+  </div>
+  <div class="add_info_block Add Links_mod">
+	<div class="add_info_header">
+	  <div class="add_info_title">Contact Info</div>
+	  <div class="add_info_colapse_butt"></div>
+	</div>
+	<div class="add_info_content_block">
+	  <div class="add_info_content">
+		<ul class="add_info_user_link_list">
+		  <li class="add_info_user_link_l_item" ng-repeat="link in store.connections_attributes" ng-show="link.url">
+			<a href="http://{{link['url']}}" target="_blank" title="link" class="add_info_user_link url {{link['name']}}">{{link['url']}}</a>
+		  </li>
+		</ul>
+	  </div>
+	  <div class="add_info_form_block">
+		<div class="add_info_form_w">
+		  <dl class="form_cell form_cell_v1_mod" ng-repeat="link in company.connections_attributes">
+			<dt class="form_c_hline form_v1_mod hline_hide_mod">
+			  <label for="Website">{{link.name}}</label>
+			</dt>
+			<dd class="form_c_f_w form_v1_mod hline_hide_mod">
+			  <input type="text" id="{{link.name}}" placeholder="{{link.name}}" class="f_c_field default_mod" ng-model="link.url">
+			</dd>
+		  </dl>
+		  <dl class="form_cell form_cell_v1_mod" ng-if="!company.connections_attributes[0]">
+			<dt class="form_c_hline form_v1_mod hline_hide_mod">
+			  <label for="Website">url</label>
+			</dt>
+			<dd class="form_c_f_w form_v1_mod hline_hide_mod">
+			  <input type="text" id="url" placeholder="url" class="f_c_field default_mod" ng-model="company.connections_attributes[0].url">
+			</dd>
+		  </dl>
+		  <dl class="form_cell form_cell_v1_mod" ng-if="!company.connections_attributes[1]">
+			<dt class="form_c_hline form_v1_mod hline_hide_mod">
+			  <label for="Website">linkedin</label>
+			</dt>
+			<dd class="form_c_f_w form_v1_mod hline_hide_mod">
+			  <input type="text" id="linkedin" placeholder="linkedin" class="f_c_field default_mod" ng-model="company.connections_attributes[1].url">
+			</dd>
+		  </dl>
+		</div>
+
+	  </div>
+	</div>
+  </div>
+  <div class="add_info_block location_mod">
+	<div class="add_info_header">
+	  <div class="add_info_title"><%= I18n.t('location') %></div>
+	  <div class="add_info_colapse_butt"></div>
+	</div>
+	<div class="add_info_content_block">
+	  <div class="add_info_content">
+		<p>{{location(store.address_attributes.street1,store.address_attributes.street2,store.address_attributes.city, store.address_attributes.state, store.address_attributes.country, store.address_attributes.postal_code)}}</p>
+	  </div>
+	  <div class="add_info_form_block">
+		<div class="add_info_form_w">
+		  <div class="form_block hor_mod">
+			<dl class="form_cell form_cell_v1_mod">
+			  <dt class="form_c_hline form_v1_mod hline_hide_mod">
+				<label for="Address">Address</label>
+			  </dt>
+			  <dd class="form_c_f_w form_v1_mod hline_hide_mod">
+				<input type="text" id="Address" placeholder="Street1" class="f_c_field default_mod " ng-model="company.address_attributes.street1">
+			  </dd>
+			</dl>
+         <dl class="form_cell form_cell_v1_mod">
+           <dt class="form_c_hline form_v1_mod hline_hide_mod">
+            <label for="Address">Street2</label>
+           </dt>
+           <dd class="form_c_f_w form_v1_mod hline_hide_mod">
+            <input type="text" id="Street2" placeholder="Street2" class="f_c_field default_mod " ng-model="company.address_attributes.street2">
+           </dd>
+         </dl>
+		  </div>
+		  <div class="form_block hor_mod third_mod">
+			<dl class="form_cell form_cell_v1_mod third_mod">
+			  <dt class="form_c_hline form_v1_mod hline_hide_mod">
+				<label for="Country">Country</label>
+			  </dt>
+			  <dd class="form_c_f_w form_v1_mod hline_hide_mod">
+				<ui-select ng-model="company.address_attributes.country" name="Country" theme="selectize">
+				  <ui-select-match placeholder="Select a country">{{$select.selected.name}}</ui-select-match>
+				  <ui-select-choices repeat="country.name as country in countries |  filter: $select.search">
+					<div ng-bind-html="country.name | highlight: $select.search"></div>
+				  </ui-select-choices>
+				</ui-select>
+			  </dd>
+			</dl>
+			<dl class="form_cell form_cell_v1_mod third_mod">
+			  <dt class="form_c_hline form_v1_mod hline_hide_mod">
+				<label for="City">State</label>
+			  </dt>
+			  <dd class="form_c_f_w form_v1_mod hline_hide_mod">
+				<ui-select ng-model="company.address_attributes.state" ng-show="company.address_attributes.country=='United States'" name="State" theme="selectize" id="selectState">
+				  <ui-select-match placeholder="US state name">{{$select.selected.name}}</ui-select-match>
+				  <ui-select-choices repeat="state.name as state in states |  filter: $select.search">
+					<div ng-bind-html="state.name | highlight: $select.search"></div>
+				  </ui-select-choices>
+				</ui-select>
+				<input type="text" id="State" placeholder="State" class="f_c_field default_mod " ng-model="company.address_attributes.state" ng-hide="company.address_attributes.country=='United States'"/>
+			  </dd>
+			</dl>
+			<dl class="form_cell form_cell_v1_mod third_mod">
+			  <dt class="form_c_hline form_v1_mod hline_hide_mod">
+				<label for="State">City</label>
+			  </dt>
+			  <dd class="form_c_f_w form_v1_mod hline_hide_mod">
+				<input type="text" id="City" placeholder="<%= I18n.t('city') %>" class="f_c_field default_mod " ng-model="company.address_attributes.city"/>
+			  </dd>
+			</dl>
+		  </div>
+          <div class="form_block hor_mod">
+            <dl class="form_cell form_cell_v1_mod">
+           <dt class="form_c_hline form_v1_mod hline_hide_mod">
+            <label for="Postalcode">Postalcode</label>
+           </dt>
+           <dd class="form_c_f_w form_v1_mod hline_hide_mod">
+            <input type="text" id="Postalcode" placeholder="PostalCode" class="f_c_field default_mod " ng-model="company.address_attributes.postal_code">
+           </dd>
+         </dl>
+        </div>
+		</div>
+	  </div>
+	</div>
+  </div>
+  <div class="add_info_block">
+	<div class="add_info_header">
+	  <div class="add_info_title"> <%= I18n.t('add_employees') + " / " + I18n.t('invite_employees') %> </div>
+	  <div class="add_info_colapse_butt"></div>
+	</div>
+	<div class="add_info_content_block">
+	  <div class="add_info_form_block">
+		<div class="add_info_form_w">
+		  <dl class="form_cell form_cell_v1_mod">
+			<dt class="form_c_hline form_v1_mod hline_hide_mod">
+			  <label for="Enter_name_of_user">Enter name of user</label>
+			</dt>
+			<dd class="form_c_f_w form_v1_mod hline_hide_mod">
+			  <input type="text" id="Enter_name_of_user" placeholder="<%= I18n.t('enter_name_of_user') %>" class="f_c_field default_mod "/>
+			</dd>
+		  </dl>
+		</div>
+	  </div>
+	</div>
+  </div>
+</div>
+<div class="add_info_footer">
+  <a class="wizard_add_butt" ng-click="companySubmit(company)">Add</a>
+</div>

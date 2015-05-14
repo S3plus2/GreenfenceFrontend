@@ -1,0 +1,53 @@
+ <div class="compain_header">
+            <div class="user_block detail_mod ">
+              <div class="user_avatar_w detail_mod "><img ng-src="{{operation.company.logo.logo.thumb.url}}" class="user_avatar_img detail_mod">
+               </div>
+
+              <div class="user_name detail_mod">{{operation.company.name}}</div>
+            </div>
+            <div class="compain_header_side_w"><ng-href="#/company_public_profile/{{operation.company.id}}" title="" class="back_to_company_butt">Back to {{operation.company.name}}</a></div>
+</div>
+<article class="post_block">
+   <div class="main_row layuot_mod_2">
+      <div class="detail_block">
+         <div class="detail_header">
+            <div class="user_block detail_mod">
+               <div class="user_avatar_w detail_mod "><img ng-src="{{operation.image.image.thumb.url}}" class="user_avatar_img detail_mod">
+               </div>
+               <div class="user_name detail_mod">{{operation.name}}</div>
+            </div>
+            <div class="detail_header_side_w"><a href="" title="" class="detail_follow_configure_butt">Follow & Configure</a></div>
+         </div>
+         <div class="detail_b_content">
+            <div class="detail_b_content_header">
+               <ul class="post_f_list">
+                  <li class="post_f_list_item">
+                     <dl class="tag_block">
+                        <dt class="tag_b_text">Services</dt>
+                        <dd class="tag_b_value">{{operation.services_count}}</dd>
+                     </dl>
+                  </li>
+                  <li class="post_f_list_item">
+                     <dl class="tag_block">
+                        <dt class="tag_b_text">Products</dt>
+                        <dd class="tag_b_value">{{operation.products_count}}</dd>
+                     </dl>
+                  </li>
+               </ul>
+            </div>
+            <div class="detail_b_content_text" ng-repeat="definition in definitions">
+               <div ng-switch on="definition.input_type">
+               <h2>{{definition.name}}</h2>
+
+                <p ng-switch-when="checkbox">{{checkedValues(definition.id)}}
+               </p>
+                <p ng-switch-when="file">
+                  <img ng-src="{{operation.definition_value[definition.id]}}" width="100px" height="150px">
+               </p>
+
+               <p ng-switch-default>{{operation.definition_value[definition.id]}}</p>
+             </div>
+            </div>
+         </div>
+   </div>
+</article>

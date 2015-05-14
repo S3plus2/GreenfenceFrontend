@@ -13,8 +13,31 @@
  */
 
 define(['app'], function (app) {
-    app.controller('BuyerCtrl', ['$rootScope', '$scope', '$routeParams', '$compile', '$location', '$translate', '$timeout', 'DocumentDefinitionsService', 'BuyerService', 'CompanyDocumentService', 'ss_alert', 'ui',
-        function ($rootScope, $scope, $routeParams, $compile, $location, $translate, $timeout, DocumentDefinitionsService, BuyerService, CompanyDocumentService, ss_alert, ui) {
+    app.controller('BuyerCtrl', [
+        '$rootScope',
+        '$scope',
+        '$routeParams',
+        '$compile',
+        '$location',
+        '$translate',
+        '$timeout',
+        'DocumentDefinitionsService',
+        'BuyerService',
+        'CompanyDocumentService',
+        'ss_alert',
+        'ui',
+        function ($rootScope,
+                  $scope,
+                  $routeParams,
+                  $compile,
+                  $location,
+                  $translate,
+                  $timeout,
+                  DocumentDefinitionsService,
+                  BuyerService,
+                  CompanyDocumentService,
+                  ss_alert,
+                  ui) {
 
             ui.collapse_butt_with_dom($(document))
             ui.multi_select_with_dom($('.select_add_category'))
@@ -22,7 +45,7 @@ define(['app'], function (app) {
             $scope.$parent.template = {
                 header: '/community/common/header',
                 slider: '',
-                rightmenu: '/community/company/rightmenu',
+                rightmenu: '/app/Greenfence/Company/views/rightmenu.html',
                 footer: ''
             }
 

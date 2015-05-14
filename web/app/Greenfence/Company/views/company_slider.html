@@ -1,0 +1,249 @@
+<div class="profile_header">
+  <div class="video_back_block mod_h_1">
+    <div class="video_back mod_h_1">
+      <video autoplay="" poster="<%= asset_path 'test.jpg' %>" loop="" class="video_block">
+        <source src="<%= asset_path 'test.webm' %>" type="video/webm">
+        <source src="<%= asset_path 'test.mp4' %>" type="video/mp4">
+      </video>
+    </div>
+  </div>
+  <div class="profile_header_w">
+    <div class="user_block profile_mod ">
+      <div class="user_avatar_w profile_mod no_img_mod">
+        <img class="user_avatar_img profile_mod user_profile_mod" ng-src="{{public_company.logo.logo.thumb.url || '/assets/avatar.png'}}" alt="{{public_company.name}}"/>
+      </div>
+      <div class="user_name profile_mod">{{public_company.name}}</div>
+      <div class="user_info profile_mod">{{public_company.type}}</div>
+      <div class="user_location profile_mod">{{public_company.address_attributes.city}}</div>
+    </div>
+    <div class="profile_header_butt_w">
+      <div class="follow_configure_butt">{{public_company.follows_count}} <%= I18n.t('follow_and_onfigure') %></div>
+    </div>
+  </div>
+</div>
+<div class="profile_body">
+  <div class="profile_about">
+    <h1 class="profile_headline">About</h1>
+    <div class="profile_about_text">
+      <p>{{public_company.company_profile_attributes.summary}}</p>
+    </div>
+  </div>
+  <div class="profile_contact_info">
+    <ul class="profile_contact_list">
+      <li class="profile_contact_l_item"><a href="mailto:{{public_company.company_profile_attributes.email}}" title="{{public_company.company_profile_attributes.email}}" class="profile_contact_link mail_mod">{{public_company.company_profile_attributes.email || "Not Provided"}}</a></li>
+      <li class="profile_contact_l_item"><a href="http://{{public_company.company_profile_attributes.website || 'Not Provided'}}" title="{{public_company.company_profile_attributes.website}}" class="profile_contact_link site_mod">{{public_company.company_profile_attributes.website || "Not Provided"}}</a></li>
+      <li class="profile_contact_l_item"><a href="tel:{{public_company.company_profile_attributes.phone}}" title="{{public_company.company_profile_attributes.phone}}" class="profile_contact_link tel_mod">{{public_company.company_profile_attributes.phone || "Not Provided"}}</a></li>
+    </ul>
+  </div>
+</div>
+
+<div id="follow_popup" style="display:none;" title="Follow &amp; Configure Notifications" ng-controller="CompanyPublicProfileFollowCtrl">
+  <div class="dialog_content"><a href="" title="" class="follow_all_notif_butt" ng-click="follow_all()"><%= I18n.t('follow_all_notifications') %></a>
+    <div class="tabs_v1">
+      <ul class="dialog_tab_list grey_mod">
+        <li class="dialog_tab_l_item grey_mod company_mod"><a href="#tab_1" title="" class="dialog_tab_1_butt grey_mod"><%= I18n.t('all') %></a></li>
+        <li class="dialog_tab_l_item grey_mod company_mod"><a href="#tab_2" title="" class="dialog_tab_1_butt grey_mod"><%= I18n.t('operations') %></a></li>
+        <li class="dialog_tab_l_item grey_mod company_mod"><a href="#tab_3" title="" class="dialog_tab_1_butt grey_mod"><%= I18n.t('services') %></a></li>
+        <li class="dialog_tab_l_item grey_mod company_mod"><a href="#tab_4" title="" class="dialog_tab_1_butt grey_mod"><%= I18n.t('products') %></a></li>
+        <li class="dialog_tab_l_item grey_mod company_mod"><a href="#tab_5" title="" class="dialog_tab_1_butt grey_mod"><%= I18n.t('certificates_and_documents') %></a></li>
+      </ul>
+      <div id="tab_1" class="tab_block">
+        <ul class="follow_list" ng-repeat="operation in operations">
+          <li class="follow_list_item">
+                <div class="user_block section_menu_mod ">
+                  <div class="user_avatar_w section_menu_mod "><img src="" alt="{{operation.name}}" class="user_avatar_img section_menu_mod">
+                  </div>
+                  <div class="user_name section_menu_mod">{{operation.name}}</div>
+                </div>
+            <div class="follow_list_info">
+              <div class="follow_list_sub">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisi cing elit, sed do eiusmod tempor incididunt ut.</p>
+              </div>
+            </div>
+            <div ng-if="operation.followed_by_current_user == false">
+              <div class="follow_list_butt" ng-click="follow_me(operation)"><%= I18n.t('follow') %></div>
+            </div>
+            <div ng-if="operation.followed_by_current_user == true">
+                <div class="follow_list_butt" ng-click="unfollow_me(operation)"><%= I18n.t('unfollow') %></div>
+            </div>
+          </li>
+        </ul>
+        <ul class="follow_list" ng-repeat="service in services">
+          <li class="follow_list_item">
+                <div class="user_block section_menu_mod ">
+                  <div class="user_avatar_w section_menu_mod "><img ng-src="{{service.service_image}}" alt="{{service.name}}" class="user_avatar_img section_menu_mod">
+                  </div>
+                  <div class="user_name section_menu_mod">{{service.name}}</div>
+                </div>
+            <div class="follow_list_info">
+              <div class="follow_list_sub">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisi cing elit, sed do eiusmod tempor incididunt ut.</p>
+              </div>
+            </div>
+            <div ng-if="service.followed_by_current_user == false">
+              <div class="follow_list_butt" ng-click="follow_me(service)"><%= I18n.t('follow') %></div>
+            </div>
+            <div ng-if="service.followed_by_current_user == true">
+                <div class="follow_list_butt" ng-click="unfollow_me(service)"><%= I18n.t('unfollow') %></div>
+            </div>
+          </li>
+        </ul>
+        <ul class="follow_list" ng-repeat="product in products">
+          <li class="follow_list_item">
+                <div class="user_block section_menu_mod ">
+                  <div class="user_avatar_w section_menu_mod "><img src="" alt="{{product.name}}" class="user_avatar_img section_menu_mod">
+                  </div>
+                  <div class="user_name section_menu_mod truncate_text" title="{{product.name}}">{{product.name}}</div>
+                </div>
+            <div class="follow_list_info">
+              <div class="follow_list_sub">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisi cing elit, sed do eiusmod tempor incididunt ut.</p>
+              </div>
+            </div>
+            <div ng-if="product.followed_by_current_user == false">
+              <div class="follow_list_butt" ng-click="follow_me(product)"><%= I18n.t('follow') %></div>
+            </div>
+            <div ng-if="product.followed_by_current_user == true">
+                <div class="follow_list_butt" ng-click="unfollow_me(product)"><%= I18n.t('unfollow') %></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div id="tab_2" class="tab_block">
+        <ul class="follow_list" ng-repeat="operation in operations track by $index">
+          <li class="follow_list_item">
+                <div class="user_block section_menu_mod ">
+                  <div class="user_avatar_w section_menu_mod "><img src="" alt="{{operation.name}}" class="user_avatar_img section_menu_mod">
+                  </div>
+                  <div class="user_name section_menu_mod">{{operation.name}}</div>
+                </div>
+            <div class="follow_list_info">
+              <div class="follow_list_sub">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisi cing elit, sed do eiusmod tempor incididunt ut.</p>
+              </div>
+            </div>
+            <div ng-if="operation.followed_by_current_user == false">
+              <div class="follow_list_butt" ng-click="follow_me(operation)"><%= I18n.t('follow') %></div>
+            </div>
+            <div ng-if="operation.followed_by_current_user == true">
+                <div class="follow_list_butt" ng-click="unfollow_me(operation)"><%= I18n.t('unfollow') %></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div id="tab_3" class="tab_block">
+        <ul class="follow_list" ng-repeat="service in services track by $index">
+          <li class="follow_list_item">
+                <div class="user_block section_menu_mod ">
+                  <div class="user_avatar_w section_menu_mod "><img ng-src="{{service.service_image}}" alt="{{service.name}}" class="user_avatar_img section_menu_mod">
+                  </div>
+                  <div class="user_name section_menu_mod">{{service.name}}</div>
+                </div>
+            <div class="follow_list_info">
+              <div class="follow_list_sub">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisi cing elit, sed do eiusmod tempor incididunt ut.</p>
+              </div>
+            </div>
+            <div ng-if="service.followed_by_current_user == false">
+              <div class="follow_list_butt" ng-click="follow_me(service)"><%= I18n.t('follow') %></div>
+            </div>
+            <div ng-if="service.followed_by_current_user == true">
+                <div class="follow_list_butt" ng-click="unfollow_me(service)"><%= I18n.t('unfollow') %></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div id="tab_4" class="tab_block">
+        <ul class="follow_list" ng-repeat="product in products">
+          <li class="follow_list_item">
+                <div class="user_block section_menu_mod ">
+                  <div class="user_avatar_w section_menu_mod "><img src="" alt="Name of operation goes here" class="user_avatar_img section_menu_mod">
+                  </div>
+                  <div class="user_name section_menu_mod truncate_text" title="{{product.name}}">{{product.name}}</div>
+                </div>
+            <div class="follow_list_info">
+              <div class="follow_list_sub">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisi cing elit, sed do eiusmod tempor incididunt ut.</p>
+              </div>
+            </div>
+            <div ng-if="product.followed_by_current_user == false">
+              <div class="follow_list_butt" ng-click="follow_me(product)"><%= I18n.t('follow') %></div>
+            </div>
+            <div ng-if="product.followed_by_current_user == true">
+                <div class="follow_list_butt" ng-click="unfollow_me(product)"><%= I18n.t('unfollow') %></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div id="tab_5" class="tab_block">
+        <ul class="follow_list">
+          <li class="follow_list_item">
+                <div class="user_block section_menu_mod ">
+                  <div class="user_avatar_w section_menu_mod "><img src="" alt="Name of operation goes here" class="user_avatar_img section_menu_mod">
+                  </div>
+                  <div class="user_name section_menu_mod">Name of operation goes here</div>
+                </div>
+            <div class="follow_list_info">
+              <div class="follow_list_sub">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisi cing elit, sed do eiusmod tempor incididunt ut.</p>
+              </div>
+            </div>
+            <div class="follow_list_butt"><%= I18n.t('follow') %></div>
+          </li>
+          <li class="follow_list_item">
+                <div class="user_block section_menu_mod ">
+                  <div class="user_avatar_w section_menu_mod "><img src="" alt="Name of service goes here" class="user_avatar_img section_menu_mod">
+                  </div>
+                  <div class="user_name section_menu_mod">Name of service goes here</div>
+                </div>
+            <div class="follow_list_info">
+              <div class="follow_list_sub">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisi cing elit, sed do eiusmod tempor incididunt ut.</p>
+              </div>
+            </div>
+            <div class="follow_list_butt"><%= I18n.t('follow') %></div>
+          </li>
+          <li class="follow_list_item">
+                <div class="user_block section_menu_mod ">
+                  <div class="user_avatar_w section_menu_mod "><img src="" alt="Name of product goes here" class="user_avatar_img section_menu_mod">
+                  </div>
+                  <div class="user_name section_menu_mod">Name of product goes here</div>
+                </div>
+            <div class="follow_list_info">
+              <div class="follow_list_sub">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisi cing elit, sed do eiusmod tempor incididunt ut.</p>
+              </div>
+            </div>
+            <div class="follow_list_butt"><%= I18n.t('follow') %></div>
+          </li>
+          <li class="follow_list_item">
+                <div class="user_block section_menu_mod ">
+                  <div class="user_avatar_w section_menu_mod "><img src="" alt="Name of certificate goes here" class="user_avatar_img section_menu_mod">
+                  </div>
+                  <div class="user_name section_menu_mod">Name of certificate goes here</div>
+                </div>
+            <div class="follow_list_info">
+              <div class="follow_list_sub">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisi cing elit, sed do eiusmod tempor incididunt ut.</p>
+              </div>
+            </div>
+            <div class="follow_list_butt"><%= I18n.t('follow') %></div>
+          </li>
+          <li class="follow_list_item">
+                <div class="user_block section_menu_mod ">
+                  <div class="user_avatar_w section_menu_mod "><img src="" alt="Name of operation" class="user_avatar_img section_menu_mod">
+                  </div>
+                  <div class="user_name section_menu_mod">Name of operation</div>
+                </div>
+            <div class="follow_list_info">
+              <div class="follow_list_sub">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisi cing elit, sed do eiusmod tempor incididunt ut.</p>
+              </div>
+            </div>
+            <div class="follow_list_butt"><%= I18n.t('follow') %></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -20,7 +20,7 @@ define(['app'], function (app) {
             $scope.$parent.template = {
                 header: '/community/common/header',
                 slider: '',
-                rightmenu: '/community/company/rightmenu',
+                rightmenu: '/app/Greenfence/Company/views/rightmenu.html',
                 footer: ''
             }
 

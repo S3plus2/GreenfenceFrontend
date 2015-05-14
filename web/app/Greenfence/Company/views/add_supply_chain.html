@@ -1,0 +1,200 @@
+<div class="view_container">
+  <h1 class="content_headline">Add your supply chain</h1>
+  <div class="add_info_sub_header">
+    <div class="wizards_save_draft_butt">Save Draft</div>
+    <div class="wizards_delete_butt">Delete</div>
+  </div>
+  <div class="add_info_block suppliers_mod">
+    <div class="add_info_header">
+      <div class="add_info_title">Suppliers I buy from</div>
+      <div class="add_info_colapse_butt"></div>
+    </div>
+    <div class="add_info_content_block">
+      <div class="add_info_form_block">
+        <div class="add_info_form_w">
+          <dl class="form_cell form_cell_v1_mod">
+            <dt class="form_c_hline form_v1_mod hline_hide_mod">
+              <label for="Enter_name">Supplier name</label>
+            </dt>
+            <dd class="form_c_f_w form_v1_mod hline_hide_mod">
+              <ui-select ng-model="company.invite_supplier" theme="selectize" ng-change="supplierProducts({{$select.selected}})">
+                <ui-select-match placeholder="Select a supplier in the list or search its name...">{{$select.selected.name}}</ui-select-match>
+                <ui-select-choices repeat="suppliable in suppliableBuyable |  filter: $select.search" >
+                  <div ng-bind-html="suppliable.name | highlight: $select.search"></div>
+                </ui-select-choices>
+              </ui-select>
+            </dd>
+          </dl>
+          <dl class="form_cell form_cell_v1_mod select_supplier_product hidden_field" style="display: none">
+            <dt class="form_c_hline form_v1_mod hline_hide_mod autocomplete_el_v1_mod">
+              <label for="Enter_name_of_category">Select Products</label>
+            </dt>
+            <dd class="form_c_f_w form_v1_mod hline_hide_mod autocomplete_el_v1_mod">
+              <select id="supplier_products" ng-model="company.invite_supplier.products" data-placeholder="Select Products" multiple="multiple" class="f_c_field default_mod select_add_category normal_list_v2" ng-options="product as product.name for product in supplier_products track by product.id">
+              </select>
+            </dd>
+          </dl>
+        </div>
+        
+        <div class="add_info_tabs_block tabs_v1 ui-tabs ui-widget ui-widget-content ui-corner-all">
+          <div class="add_info_tabs_b_header">
+            <div class="add_info_tabs_b_header_text">
+              <p>(Showing 5 out 1M Suppliers)</p>
+            </div><a href="" title="Search" class="add_info_tabs_b_header_search_trigger">Search</a>
+          </div>
+          <ul class="dialog_tab_list add_info_mod ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" role="tablist">
+            <li class="dialog_tab_l_item add_info_mod ui-state-default ui-corner-top ui-tabs-active ui-state-active" role="tab" tabindex="0" aria-controls="suppliers_tab_1" aria-labelledby="ui-id-3" aria-selected="true" aria-expanded="true"><a href="#suppliers_tab_1" title="2 Added" class="dialog_tab_1_butt add_info_mod ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-3">{{suppliers.length}} Added</a></li>
+            <li class="dialog_tab_l_item add_info_mod ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="suppliers_tab_2" aria-labelledby="ui-id-4" aria-selected="false" aria-expanded="false"><a href="#suppliers_tab_2" title="1 Pending" class="dialog_tab_1_butt add_info_mod ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-4">{{pending_suppliers.length}} Pending</a></li>
+          </ul>
+          <div class="add_info_form_w">
+            <!--+form_field('Enter category or name of company',false, 'form_cell_v1_mod hidden_field', 'form_v1_mod hline_hide_mod', 'default_mod')-->
+            <dl class="form_cell form_cell_v1_mod hidden_field">
+              <dt class="form_c_hline form_v1_mod hline_hide_mod">
+                <label for="Enter_name">Enter name</label>
+              </dt>
+              <dd class="form_c_f_w form_v1_mod hline_hide_mod">
+                <select id="Enter_name" data-placeholder="Enter name" multiple="multiple" class="f_c_field category_filter_mod default_mod white_mod select_rediz_coosen_huge_mod" style="display: none;">
+                  <option></option>
+                  <option value="0" data-img="ava_47.jpg" class="chosen_huge_mod">Michael Abehsera</option>
+                  <option value="1" data-img="john.jpg" class="chosen_huge_mod">John Allen</option>
+                </select><div class="chosen-container chosen-container-multi f_c_field category_filter_mod default_mod white_mod select_rediz_coosen_huge_mod" style="width: 100%;" title="" id="Enter_name_chosen"><ul class="chosen-choices"><li class="search-field"><input type="text" value="Enter name" class="default" autocomplete="off" style="width: 90px;"></li></ul><div class="chosen-drop"><div class="chosen_rediz_header"><span class="chosen_rediz_contacts">30 Contacts</span><a class="chosen_select_all_butt" href="#">Select All</a><div class="chosen_send_invite_butt">Send Invite</div></div><ul class="chosen-results"></ul><a class="chosen_import_contacts_butt" href="#">Import contacts</a></div></div>
+              </dd>
+            </dl>
+          </div>
+          <div id="suppliers_tab_1" class="tab_block ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-3" role="tabpanel" aria-hidden="false">
+            <ul class="info_b_sub_list">
+              <li class="info_b_sub_list_item suppliers_mod" ng-repeat="supplier in suppliers">
+                <div class="user_block small_mod supply_mod ">
+                  <div class="user_avatar_w small_mod supply_mod "><img ng-src="" alt="" class="user_avatar_img small_mod supply_mod">
+                  </div>
+                  <div class="user_name small_mod supply_mod">{{supplier.name}}</div>
+                </div>
+                <div class="gl_action_block supply_mod"><a href="" title="" class="gl_action_trigger_butt supply_options_butt">Options</a>
+                  <ul class="gl_action_list supply_mod">
+                    <li class="gl_action_item supply_mod"><a href="" title="Add to group" class="gl_action_butt supply_mod add_to_group_mod">Add to group</a></li>
+                    <li class="gl_action_item supply_mod"><a href="" title="Remove" class="gl_action_butt supply_mod remove_mod">Remove</a></li>
+                  </ul>
+                </div>
+              </li>
+              
+            </ul>
+          </div>
+          <div id="suppliers_tab_2" class="tab_block ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-4" role="tabpanel" aria-hidden="true" style="display: none;">
+            <ul class="info_b_sub_list">
+              <li class="info_b_sub_list_item suppliers_mod" ng-repeat="pending_supplier in pending_suppliers">
+                <div class="user_block small_mod supply_mod ">
+                  <div class="user_avatar_w small_mod supply_mod "><img ng-src="" alt="" class="user_avatar_img small_mod supply_mod">
+                  </div>
+                  <div class="user_name small_mod supply_mod">{{pending_supplier.name}}</div>
+                </div>
+                <div class="gl_action_block supply_mod"><a href="" title="" class="gl_action_trigger_butt supply_options_butt">Options</a>
+                  <ul class="gl_action_list supply_mod">
+                    <li class="gl_action_item supply_mod"><a href="" title="Add to group" class="gl_action_butt supply_mod add_to_group_mod">Add to group</a></li>
+                    <li class="gl_action_item supply_mod"><a href="" title="Remove" class="gl_action_butt supply_mod remove_mod">Remove</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="add_info_footer"><a class="wizard_add_butt" ng-click="inviteSupplier(company)">Add</a></div>
+  <div class="add_info_block suppliers_mod">
+    <div class="add_info_header">
+      <div class="add_info_title">Buyers I sell to</div>
+      <div class="add_info_colapse_butt"></div>
+    </div>
+    <div class="add_info_content_block">
+      <div class="add_info_form_block">
+        <div class="add_info_form_w">
+          <dl class="form_cell form_cell_v1_mod">
+            <dt class="form_c_hline form_v1_mod hline_hide_mod">
+              <label for="Enter_name">Enter name</label>
+            </dt>
+            <dd class="form_c_f_w form_v1_mod hline_hide_mod">
+              <dd class="form_c_f_w form_v1_mod hline_hide_mod">
+              <ui-select ng-model="company.invite_buyer" theme="selectize" ng-change="buyerProducts()">
+                <ui-select-match placeholder="Select a buyer in the list or search its name...">{{$select.selected.name}}</ui-select-match>
+                <ui-select-choices repeat="buyable in suppliableBuyable |  filter: $select.search" >
+                  <div ng-bind-html="buyable.name | highlight: $select.search"></div>
+                </ui-select-choices>
+              </ui-select>
+            </dd>
+          </dl>
+          <dl class="form_cell form_cell_v1_mod select_buyer_product hidden_field" style="display: none">
+            <dt class="form_c_hline form_v1_mod hline_hide_mod autocomplete_el_v1_mod">
+              <label for="Enter_name_of_category">Select Products</label>
+            </dt>
+            <dd class="form_c_f_w form_v1_mod hline_hide_mod autocomplete_el_v1_mod">
+              <select id="buyer_products" ng-model="company.invite_buyer.products" data-placeholder="Select Products" multiple="multiple" class="f_c_field default_mod select_add_category normal_list_v2" ng-options="product as product.name for product in buyer_products track by product.id">
+              </select>
+            </dd>
+          </dl>
+        </div>
+        <div class="add_info_tabs_block tabs_v1 ui-tabs ui-widget ui-widget-content ui-corner-all">
+          <div class="add_info_tabs_b_header">
+            <div class="add_info_tabs_b_header_text">
+              <p>(Showing 5 out 1M Suppliers)</p>
+            </div><a href="" title="Search" class="add_info_tabs_b_header_search_trigger">Search</a>
+          </div>
+          <ul class="dialog_tab_list add_info_mod ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" role="tablist">
+            <li class="dialog_tab_l_item add_info_mod ui-state-default ui-corner-top ui-tabs-active ui-state-active" role="tab" tabindex="0" aria-controls="suppliers_tab_1" aria-labelledby="ui-id-5" aria-selected="true" aria-expanded="true"><a href="#suppliers_tab_1" title="2 Added" class="dialog_tab_1_butt add_info_mod ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-5">{{buyers.length}} Added</a></li>
+            <li class="dialog_tab_l_item add_info_mod ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="suppliers_tab_2" aria-labelledby="ui-id-6" aria-selected="false" aria-expanded="false"><a href="#suppliers_tab_2" title="1 Pending" class="dialog_tab_1_butt add_info_mod ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-6">{{pending_buyers.length}}  Pending</a></li>
+          </ul>
+          <div class="add_info_form_w">
+           
+            <dl class="form_cell form_cell_v1_mod hidden_field">
+              <dt class="form_c_hline form_v1_mod hline_hide_mod">
+                <label for="Enter_name">Enter name</label>
+              </dt>
+              <dd class="form_c_f_w form_v1_mod hline_hide_mod">
+                <select id="Enter_name" data-placeholder="Enter name" multiple="multiple" class="f_c_field category_filter_mod default_mod white_mod select_rediz_coosen_huge_mod" style="display: none;">
+                  <option></option>
+                  <option value="0" data-img="ava_47.jpg" class="chosen_huge_mod">Michael Abehsera</option>
+                  <option value="1" data-img="john.jpg" class="chosen_huge_mod">John Allen</option>
+                </select><div class="chosen-container chosen-container-multi f_c_field category_filter_mod default_mod white_mod select_rediz_coosen_huge_mod" style="width: 100%;" title="" id="Enter_name_chosen"><ul class="chosen-choices"><li class="search-field"><input type="text" value="Enter name" class="default" autocomplete="off" style="width: 90px;"></li></ul><div class="chosen-drop"><div class="chosen_rediz_header"><span class="chosen_rediz_contacts">30 Contacts</span><a class="chosen_select_all_butt" href="#">Select All</a><div class="chosen_send_invite_butt">Send Invite</div></div><ul class="chosen-results"></ul><a class="chosen_import_contacts_butt" href="#">Import contacts</a></div></div>
+              </dd>
+            </dl>
+          </div>
+          <div id="suppliers_tab_1" class="tab_block ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-5" role="tabpanel" aria-hidden="false">
+            <ul class="info_b_sub_list">
+              <li class="info_b_sub_list_item suppliers_mod" ng-repeat="buyer in buyers">
+                <div class="user_block small_mod supply_mod ">
+                  <div class="user_avatar_w small_mod supply_mod "><img ng-src="" alt="" class="user_avatar_img small_mod supply_mod">
+                  </div>
+                  <div class="user_name small_mod supply_mod">{{buyer.name}}</div>
+                </div>
+                <div class="gl_action_block supply_mod"><a href="" title="" class="gl_action_trigger_butt supply_options_butt">Options</a>
+                  <ul class="gl_action_list supply_mod">
+                    <li class="gl_action_item supply_mod"><a href="" title="Add to group" class="gl_action_butt supply_mod add_to_group_mod">Add to group</a></li>
+                    <li class="gl_action_item supply_mod"><a href="" title="Remove" class="gl_action_butt supply_mod remove_mod">Remove</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div id="suppliers_tab_2" class="tab_block ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-6" role="tabpanel" aria-hidden="true" style="display: none;">
+            <ul class="info_b_sub_list">
+              <li class="info_b_sub_list_item suppliers_mod" ng-repeat="pending_buyer in pending_buyers">
+                <div class="user_block small_mod supply_mod ">
+                  <div class="user_avatar_w small_mod supply_mod "><img ng-src="" alt="" class="user_avatar_img small_mod supply_mod">
+                  </div>
+                  <div class="user_name small_mod supply_mod">{{pending_buyer.name}}</div>
+                </div>
+                <div class="gl_action_block supply_mod"><a href="" title="" class="gl_action_trigger_butt supply_options_butt">Options</a>
+                  <ul class="gl_action_list supply_mod">
+                    <li class="gl_action_item supply_mod"><a href="" title="Add to group" class="gl_action_butt supply_mod add_to_group_mod">Add to group</a></li>
+                    <li class="gl_action_item supply_mod"><a href="" title="Remove" class="gl_action_butt supply_mod remove_mod">Remove</a></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="add_info_footer"><a class="wizard_add_butt" ng-click="inviteBuyer(company)">Add</a></div>
+</div>

@@ -1,0 +1,105 @@
+<input type="hidden" value="<%= current_user.company.id %>" id="current_company_id"/>
+<input type="hidden" value="<%= current_user.id %>" id="current_user_id"/>
+<div class="view_container">
+  <h1 class="content_headline" ng-hide="store.id">Create Document Definition</h1>
+  <h1 class="content_headline" ng-show="store.id">View/Edit a Document</h1>
+  <div class="add_info_sub_header">
+    <div class="wizards_save_draft_butt">Save Draft</div>
+    <div class="wizards_delete_butt">Delete</div>
+  </div>
+  <div class="add_info_block title_mod">
+    <div class="add_info_header">
+      <div class="add_info_title">Document Type Name</div>
+      <div class="add_info_colapse_butt"></div>
+    </div>
+    <div class="add_info_content_block">
+      <div class="add_info_form_block" style="display: none;">
+        <div class="add_info_form_w">
+          <dl class="form_cell form_cell_v1_mod">
+            <dt class="form_c_hline form_v1_mod hline_hide_mod">
+              <label for="document_type_name">Enter document type name</label>
+            </dt>
+            <dd class="form_c_f_w form_v1_mod hline_hide_mod">
+              <input type="text" id="enter_document_type_name" placeholder="Enter name of document type" class="f_c_field default_mod" ng-model="document_definition.document_type">
+            </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="add_info_block">
+        <div class="add_info_header">
+          <div class="add_info_title">Document Type For</div>
+          <div class="add_info_colapse_butt operation_box"></div>
+        </div>
+        <div class="add_info_content_block">
+          <div class="add_info_form_block operation_box">
+            <div class="add_info_form_w">
+              <dl class="form_cell form_cell_v1_mod">
+                <dt class="form_c_hline form_v1_mod hline_hide_mod">
+                  <label for="Document_type_for">Document Type For</label>
+                </dt>              
+                <dd class="form_c_f_w form_v1_mod hline_hide_mod autocomplete_el_v1_mod">
+                  <ui-select ng-model="document_definition.document_type_for" theme="selectize">
+                    <ui-select-match placeholder="Select document type for...">{{$select.selected.type}}</ui-select-match>
+                    <ui-select-choices repeat="document_type_for.value as document_type_for in document_type_for_list |  filter: $select.search">
+                      <div ng-bind-html="document_type_for.type | highlight: $select.search"></div>
+                    </ui-select-choices>
+                  </ui-select>
+                </dd>
+              </dl>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="add_info_block upload_mod">
+    <div class="add_info_header">
+      <div class="add_info_title">Custom Definitions</div>
+      <div class="add_info_colapse_butt"></div>
+    </div>
+    <div class="add_info_content_block">
+      <div class="add_info_form_block">
+        <div class="add_info_form_w">
+          <div id="d_structure" style="margin-top: 10px">
+            <div class="mb_inp boxshadow_border" style="background: transparent; width: 85%; height: 100px; float: left;">
+              <input type="hidden" required  ng-model="document_definition.definition[0].id" ng-init="document_definition.definition[0].id=0"/>
+              <input type="hidden" required ng-model="document_definition.definition[0].sort_order" ng-init="document_definition.definition[0].sort_order=0"/>
+              <input type="text" ng-model="document_definition.definition[0].name" id="name" class="d_padding" style="width: 120px; vertical-align: top;" placeholder="Enter name">
+              <select ng-model="document_definition.definition[0].input_type" id="input_type" class="d_padding" ng-change="showHideOption($event);">
+                <option value="">Field type...</option>
+                <option value="text">Text Box</option>
+                <option value="checkbox">Check Box</option>
+                <option value="radio">Radio Button</option>
+                <option value="number">Number</option>
+                <option value="select">Select List</option>
+                <option value="standard">Standard List</option>
+                <option value="file">File</option>
+              </select>
+              <select class="d_padding" ng-model="document_definition.definition[0].required">
+                <option value="">Required...</option>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+              </select>
+              <select class="d_padding" ng-model="document_definition.definition[0].searchable" id="searchable">
+                <option value="">Searchable...</option>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+              </select>
+              <textarea rows="4" class="d_padding" ng-model="document_definition.definition[0].options" id="options" style="display:none; float:right; width: 120px;"></textarea>
+              <select class="d_padding" ng-model="document_definition.definition[0].standard" id="standard" style="display:none;">
+                <option value="">Standards...</option>
+                <option selected="true" value="business">Business Type</option>
+                <option value="scheme">Scheme Type</option>
+              </select>
+            </div>
+            <img title="Remove" src="" ng-click="removeStructure($event);" style="margin: 10px; height:80px;">
+          </div>
+        </div>
+        <div class="butt_wrap add_info_form_mod">
+          <div class="section_menu_link image_mod" ng-click="attach_multiple_images($event);" style="white-space: nowrap;">+ Add More</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="add_info_footer"><a href="" class="wizard_add_butt" ng-click="createDocumentDefinition(document_definition)">Add</a></div>
+</div>

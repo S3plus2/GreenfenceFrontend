@@ -10,7 +10,7 @@ define(['app'], function (app) {
 			$scope.$parent.template = {
 				header : '/community/common/header',
 				slider: '',
-				rightmenu: '/community/user/rightmenu',
+				rightmenu: '/app/Greenfence/User/views/parts/right_column.html',
 				footer: ''
 			}
 

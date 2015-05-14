@@ -1,0 +1,254 @@
+<div class="secondary_row layuot_mod_1" ng-controller='AddCompanyRightMenuCtrl'>
+  <div id='company_img_crop' style="display: none">
+    <div class="cropArea">
+      <img-crop image="myImage" result-image="myCroppedImage"></img-crop>
+    </div>
+    <div>
+      <div class="butt_save" ng-click="uploadCompanyImage()" style="margin: 0">Save</div>
+    </div>
+  </div>
+  <div class="section_menu">
+    <div class="user_block about_mod wizard_menu_mod ">
+      <div class="user_avatar_w about_mod wizard_menu_mod "><img ng-src="{{current_company.logo.logo.thumb.url || '/assets/avatar.png'}}" alt="{{current_company.name}}" class="user_avatar_img about_mod wizard_menu_mod">
+      </div>
+      <div class="user_name about_mod wizard_menu_mod">{{current_company.name}}</div>
+      <% if current_user.company && current_user.company.updatable_by?(current_user) %>
+        <button class="user_company_edit_butt about_mod wizard_menu_mod" id="avatar_file" accept="image/*" ng-file-select ng-file-change="upload($files, $event)">Edit</button>
+      <% end %>
+      <% if current_user.company %>
+        <a href="#/company_public_profile/" style="text-decoration: none;" class="user_company_view_butt about_mod wizard_menu_mod">View profile</a>
+      <% end %>
+    </div>
+    <div class="menu_cat_cell" ng-controller="OperationFilterCtrl">
+      <div class="menu_cat_title"><%= I18n.t('operations') %></div>
+      <div class="menu_cat_amount">{{operations.length}}</div>
+      <div class="menu_cat_view">
+        <div class="menu_cat_option_butt filled_mod">
+          <div data-option-text="View All" data-option-open-text="Collapse" class="menu_cat_option_butt_text filled_mod"></div>
+        </div>
+        <div class="menu_cat_view_hidden_b">
+          <dl class="form_cell form_cell_v1_mod">
+            <dt class="form_c_hline form_v1_mod hline_hide_mod menu_cat_search_mod">
+              <label for="Tape_name_of_operation"><%= I18n.t('tape_name_of_operation') %> </label>
+            </dt>
+            <dd class="form_c_f_w form_v1_mod hline_hide_mod menu_cat_search_mod">
+              <input type="text" id="Tape_name_of_operation" placeholder="<%= I18n.t('tape_name_of_operation') %>" class="f_c_field third_mod menu_cat_search_mod " ng-model="operationText">
+            </dd>
+          </dl>
+          <ul class="menu_cat_search_result">
+            <li class="menu_cat_search_result_item" ng-repeat="operation in operations | filter:operationText ">
+              <div title="{{operation.name}}" class="menu_cat_s_result_el"><a href="#/operation/edit/{{operation.id}}">{{operation.name}}</a></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <% if user_signed_in? %>
+      <% if current_user.company && current_user.company.type == 'Corporation' %>
+        <div class="menu_cat_cell" ng-controller="ProductFilterCtrl">
+          <div class="menu_cat_title"><%= I18n.t('products') %></div>
+          <div class="menu_cat_amount">{{company_products.length}}</div>
+          <div class="menu_cat_view">
+            <div class="menu_cat_option_butt filled_mod">
+              <div data-option-text="View All" data-option-open-text="Collapse" class="menu_cat_option_butt_text filled_mod"></div>
+            </div>
+            <div class="menu_cat_view_hidden_b">
+              <dl class="form_cell form_cell_v1_mod">
+                <dt class="form_c_hline form_v1_mod hline_hide_mod menu_cat_search_mod">
+                  <label for="Tape_name_of_product"><%= I18n.t('tape_name_of') +  I18n.t('products') %> </label>
+                </dt>
+                <dd class="form_c_f_w form_v1_mod hline_hide_mod menu_cat_search_mod">
+                  <input type="text" id="Tape_name_of_product" placeholder="<%= I18n.t('tape_name_of') + "  " +  I18n.t('products') %>" class="f_c_field third_mod menu_cat_search_mod " ng-model="productText">
+                </dd>
+              </dl>
+              <ul class="menu_cat_search_result">
+                <li class="menu_cat_search_result_item" ng-repeat="company_product in company_products | filter:productText">
+                  <div title="{{company_product.name}}" class="menu_cat_s_result_el">{{company_product.name}}</div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+    <div class="menu_cat_cell" ng-controller="ServiceFilterCtrl">
+      <div class="menu_cat_title"><%= I18n.t('service')  + "s" %></div>
+      <div class="menu_cat_amount">{{company_services.length}}</div>
+      <div class="menu_cat_view">
+        <div class="menu_cat_option_butt filled_mod">
+          <div data-option-text="View All" data-option-open-text="Collapse" class="menu_cat_option_butt_text filled_mod"></div>
+        </div>
+        <div class="menu_cat_view_hidden_b">
+          <dl class="form_cell form_cell_v1_mod">
+            <dt class="form_c_hline form_v1_mod hline_hide_mod menu_cat_search_mod">
+              <label for="Tape_name_of_service"><%= I18n.t('tape_name_of') + " "+  I18n.t('service') %> </label>
+            </dt>
+            <dd class="form_c_f_w form_v1_mod hline_hide_mod menu_cat_search_mod">
+              <input type="text" id="Tape_name_of_service" placeholder="<%= I18n.t('tape_name_of') + " "+  I18n.t('service') %>" class="f_c_field third_mod menu_cat_search_mod " ng-model="serviceText">
+            </dd>
+          </dl>
+          <ul class="menu_cat_search_result">
+            <li class="menu_cat_search_result_item" ng-repeat="service in company_services | filter:serviceText">
+              <div class="menu_cat_s_result_el"><a href="#/service/edit/{{service.id}}">{{service.name}}</a></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <% if user_signed_in? %>
+      <% if current_user.company && current_user.company.type == 'Corporation' %>
+        <div class="menu_cat_cell" ng-controller="SupplierFilterCtrl">
+          <div class="menu_cat_title"><%= I18n.t('suppliers') %></div>
+          <div class="menu_cat_amount">{{suppliers.length}}</div>
+          <div class="menu_cat_view">
+            <div class="menu_cat_option_butt filled_mod">
+              <div data-option-text="View All" data-option-open-text="Collapse" class="menu_cat_option_butt_text filled_mod"></div>
+            </div>
+            <div class="menu_cat_view_hidden_b">
+              <dl class="form_cell form_cell_v1_mod">
+                <dt class="form_c_hline form_v1_mod hline_hide_mod menu_cat_search_mod">
+                  <label for="Type_name_of_suppliers"><%= I18n.t('type_name_of') + " " + I18n.t('suppliers') %></label>
+                </dt>
+                <dd class="form_c_f_w form_v1_mod hline_hide_mod menu_cat_search_mod">
+                  <input type="text" id="Type_name_of_suppliers" placeholder="<%= I18n.t('type_name_of') + " " + I18n.t('suppliers') %>" class="f_c_field third_mod menu_cat_search_mod " ng-model="supplierText">
+                </dd>
+              </dl>
+              <ul class="menu_cat_search_result">
+                <li class="menu_cat_search_result_item" ng-repeat="supplier in suppliers | filter:supplierText">
+                  <div title="{{supplier.name}}" class="menu_cat_s_result_el"><a href="#/supplier/{{supplier.id}}">{{supplier.name}}</a></div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+    <% if user_signed_in? %>
+      <% if current_user.company && current_user.company.type == 'Corporation' %>
+        <div class="menu_cat_cell" ng-controller="BuyerFilterCtrl">
+          <div class="menu_cat_title"><%= I18n.t('buyers') %></div>
+          <div class="menu_cat_amount">{{buyers.length}}</div>
+          <div class="menu_cat_view">
+            <div class="menu_cat_option_butt filled_mod">
+              <div data-option-text="View All" data-option-open-text="Collapse" class="menu_cat_option_butt_text filled_mod"></div>
+            </div>
+            <div class="menu_cat_view_hidden_b">
+              <dl class="form_cell form_cell_v1_mod">
+                <dt class="form_c_hline form_v1_mod hline_hide_mod menu_cat_search_mod">
+                  <label for="Type_name_of_customers"><%= I18n.t('type_name_of') + " " + I18n.t('buyers') %></label>
+                </dt>
+                <dd class="form_c_f_w form_v1_mod hline_hide_mod menu_cat_search_mod">
+                  <input type="text" id="Type_name_of_customers" placeholder="<%= I18n.t('type_name_of') + " " + I18n.t('buyers') %>" class="f_c_field third_mod menu_cat_search_mod " ng-model="buyerText">
+                </dd>
+              </dl>
+              <ul class="menu_cat_search_result">
+                <li class="menu_cat_search_result_item" ng-repeat="buyer in buyers | filter:buyerText">
+                  <div title="{{buyer.name}}" class="menu_cat_s_result_el"><a href="#/buyer/{{buyer.id}}">{{buyer.name}}</a></div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+    <div class="menu_cat_cell" ng-controller="CompanyDocumentFilterCtrl">
+      <div class="menu_cat_title">   <%= I18n.t('certificates')  + " /"  +  I18n.t('documents')  %> </div>
+      <div class="menu_cat_amount">{{documents.length}}</div>
+      <div class="menu_cat_view">
+        <div class="menu_cat_option_butt filled_mod">
+          <div data-option-text="View All" data-option-open-text="Collapse" class="menu_cat_option_butt_text filled_mod"></div>
+        </div>
+        <div class="menu_cat_view_hidden_b">
+          <dl class="form_cell form_cell_v1_mod">
+            <dt class="form_c_hline form_v1_mod hline_hide_mod menu_cat_search_mod">
+              <label for="Tape_name_of_documentfolder"><%= I18n.t('tape_name_of') %> document/folder</label>
+            </dt>
+            <dd class="form_c_f_w form_v1_mod hline_hide_mod menu_cat_search_mod">
+              <input type="text" id="Tape_name_of_documentfolder" placeholder="Type name of document/folder" class="f_c_field third_mod menu_cat_search_mod " ng-model="docText">
+            </dd>
+          </dl>
+          <div class="folders_block">
+            <div class="folders_head">
+              <div class="folders_head_hline">Filter by Folder</div>
+              <div class="folders_head_butt add_edit_mod"><%= I18n.t('edit') + "/"  +  I18n.t('add')   %>    </div>
+            </div>
+            <div class="folder_block">
+              <div class="folder_block_list">
+                <div class="folder_b_head" ng-repeat="company_folder in company_folders | filter:docText">
+                  <div class="folder_b_head_title">{{company_folder.folder_name}}</div>
+                  <div class="folder_b_amount">{{company_folder.documents.length}}</div>
+                </div>
+              </div>
+              <ul class="folder_b_action_list">
+                <li class="folder_b_action_l_item"><span class="folder_b_action"><%= I18n.t('edit') %> </span></li>
+                <li class="folder_b_action_l_item"><span class="folder_b_action share_mod">Share</span></li>
+              </ul>
+            </div>
+            <div class="document_block">
+              <div class="doc_block folders_mod" ng-repeat="document in documents | filter:docText">
+                <div class="doc_title folders_mod "><a href="#/company_document/edit/{{document.id}}" style="text-decoration: none;">{{document.document_name}}</a></div>
+                <div title="Share" class="doc_action folders_mod share_mod"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% if user_signed_in? %>
+      <% if current_user.company && current_user.company.type == 'CertifyingBody' %>
+        <div class="menu_cat_cell">
+          <div class="menu_cat_title">Auditors</div>
+          <div class="menu_cat_amount">5k</div>
+          <div class="menu_cat_view">
+            <div class="menu_cat_option_butt filled_mod">
+              <div data-option-text="View All" data-option-open-text="Collapse" class="menu_cat_option_butt_text filled_mod"></div>
+            </div>
+            <div class="menu_cat_view_hidden_b">
+              <dl class="form_cell form_cell_v1_mod">
+                <dt class="form_c_hline form_v1_mod hline_hide_mod menu_cat_search_mod">
+                  <label for="Tape_name_of_auditor">Type name of auditor</label>
+                </dt>
+                <dd class="form_c_f_w form_v1_mod hline_hide_mod menu_cat_search_mod">
+                  <input type="text" id="Tape_name_of_auditor" placeholder="Type name of auditor" class="f_c_field third_mod menu_cat_search_mod ">
+                </dd>
+              </dl>
+              <ul class="menu_cat_search_result">
+                <li class="menu_cat_search_result_item">
+                  <div class="menu_cat_s_result_el">auditor name #</div>
+                </li>
+                <li class="menu_cat_search_result_item">
+                  <div class="menu_cat_s_result_el">auditor name #</div>
+                </li>
+                <li class="menu_cat_search_result_item">
+                  <div class="menu_cat_s_result_el">auditor name #</div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+    <div class="category_add_butt"> <%= I18n.t('add')   %>
+      <ul data-block-hline="<%= I18n.t('add')   %>" class="user_sub_menu add_mod">
+        <% if user_signed_in? %>
+          <% if current_user.company && current_user.company.type == 'Corporation' %>
+            <li class="user_sub_menu_item add_mod"><a href="#/operations" title="" data-link-text="<%= I18n.t('add')   %>" class="user_sub_menu_link add_mod"> <%= I18n.t('operations') %>  </a></li>
+            <li class="user_sub_menu_item add_mod"><a href="#/add_product" title="" data-link-text="<%= I18n.t('add')   %>" class="user_sub_menu_link add_mod"> <%= I18n.t('products') %>  </a></li>
+            <li class="user_sub_menu_item add_mod"><a href="#/services" title="" data-link-text="<%= I18n.t('add')   %>" class="user_sub_menu_link add_mod"><%= I18n.t('service')  + "s" %></a></li>
+            <li class="user_sub_menu_item add_mod"><a href="#/add_supply_chain" title="" data-link-text="<%= I18n.t('add')   %>" class="user_sub_menu_link add_mod"><%= I18n.t('supply_Chain') %>  </a></li>
+            <li class="user_sub_menu_item add_mod"><a href="#/documents" title="" data-link-text="<%= I18n.t('add')   %>" class="user_sub_menu_link add_mod"><%= I18n.t('certificates')  + " /"  +  I18n.t('documents')  %> </a></li>
+            <li class="user_sub_menu_item add_mod"><a href="" title="" data-link-text="<%= I18n.t('add')   %>" class="user_sub_menu_link add_mod">Lab</a></li>
+          <% end %>
+        <% end %>
+        <% if user_signed_in? %>
+          <% if current_user.company && current_user.company.type == 'CertifyingBody' %>
+            <li class="user_sub_menu_item add_mod"><a href="" title="" data-link-text="<%= I18n.t('add')   %>" class="user_sub_menu_link add_mod"> <%= I18n.t('operations') %>  </a></li>
+            <li class="user_sub_menu_item add_mod"><a href="#/services" title="" data-link-text="<%= I18n.t('add')   %>" class="user_sub_menu_link add_mod"><%= I18n.t('service')  + "s" %></a></li>
+            <li class="user_sub_menu_item add_mod"><a href="#/documents" title="" data-link-text="<%= I18n.t('add')   %>" class="user_sub_menu_link add_mod"><%= I18n.t('certificates')  + " /"  +  I18n.t('documents')  %> </a></li>
+            <li class="user_sub_menu_item add_mod"><a href="" title="" data-link-text="<%= I18n.t('add')   %>" class="user_sub_menu_link add_mod">Auditors</a></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
