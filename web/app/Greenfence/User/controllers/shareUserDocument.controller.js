@@ -1,57 +1,71 @@
+'use strict';
+
+/**
+ * This file is part of the Greenfence package.
+ *
+ * (c) Ivan Proskuryakov
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * @name            GreenfenceUser
+ * @description     ...
+ */
+
 define(['app'], function (app) {
 
-	app.controller('ShareUserDocumentCtrl', ['$rootScope', '$scope', '$filter', 'UserService', 'UserDocumentService', 'UserFolderService', 'ShareUserDocumentService', 'ss_alert', '$translate', 'ui', '$http', '$timeout',
-		function($rootScope, $scope, $filter, UserService, UserDocumentService, UserFolderService, ShareUserDocumentService,  ss_alert, $translate, ui, $http, $timeout) {
-	    	
-			$scope.share = {
-				folder_id: "",
-				document_id: "",
-				user_id: "",
-				message: ""
-			}
+    app.controller('ShareUserDocumentCtrl', ['$rootScope', '$scope', '$filter', 'UserService', 'UserDocumentService', 'UserFolderService', 'ShareUserDocumentService', 'ss_alert', '$translate', 'ui', '$http', '$timeout',
+        function ($rootScope, $scope, $filter, UserService, UserDocumentService, UserFolderService, ShareUserDocumentService, ss_alert, $translate, ui, $http, $timeout) {
 
-			var dom = null,
-				msg_key = null;
+            $scope.share = {
+                folder_id: "",
+                document_id: "",
+                user_id: "",
+                message: ""
+            }
 
-			UserFolderService.query().$promise.then(function(data) {
-				$scope.user_folders = data
-			})
+            var dom = null,
+                msg_key = null;
 
-			UserService.gatAllUsers().$promise.then(function(data) {
-				$scope.users = data
-			})
+            UserFolderService.query().$promise.then(function (data) {
+                $scope.user_folders = data
+            })
 
-			UserDocumentService.query().$promise.then(function(data) {
-			 	$scope.user_documents = data
-			})
+            UserService.gatAllUsers().$promise.then(function (data) {
+                $scope.users = data
+            })
 
-	    	$scope.shareFolder = function(share) {
-	    		dom = '#share_folder_msg_box'
-	    		msg_key = 'FOLDER_SHARED_SUCCESSFULLY'
-	    		ShareUserDocumentService.shareDocument(share).$promise.then(success, error)
-	    	}
+            UserDocumentService.query().$promise.then(function (data) {
+                $scope.user_documents = data
+            })
 
-	    	$scope.shareDocument = function(share) {
-	    		dom = '#share_document_msg_box'
-	    		msg_key = 'DOCUMENT_SHARED_SUCCESSFULLY'
-	    		ShareUserDocumentService.shareDocument(share).$promise.then(success, error)
-	    	}
+            $scope.shareFolder = function (share) {
+                dom = '#share_folder_msg_box'
+                msg_key = 'FOLDER_SHARED_SUCCESSFULLY'
+                ShareUserDocumentService.shareDocument(share).$promise.then(success, error)
+            }
 
-	    	var success = function(data) {
-				$(dom).text($translate.instant(msg_key)).css({"font-size": "3", "color": 'Green'})
-				$timeout(function() {
-					$(dom).empty()
-					$('.dialog_cancel_butt').trigger('click')
-				}, 2000)
-			}
+            $scope.shareDocument = function (share) {
+                dom = '#share_document_msg_box'
+                msg_key = 'DOCUMENT_SHARED_SUCCESSFULLY'
+                ShareUserDocumentService.shareDocument(share).$promise.then(success, error)
+            }
 
-			var error = function(reason) {
-				$(dom).text(reason.data.errors).css({"font-size": "3", "color": "Red"})  
-				$timeout(function() {
-					$(dom).empty()
-				}, 4000)
-			}		
-		}
-	])
+            var success = function (data) {
+                $(dom).text($translate.instant(msg_key)).css({"font-size": "3", "color": 'Green'})
+                $timeout(function () {
+                    $(dom).empty()
+                    $('.dialog_cancel_butt').trigger('click')
+                }, 2000)
+            }
+
+            var error = function (reason) {
+                $(dom).text(reason.data.errors).css({"font-size": "3", "color": "Red"})
+                $timeout(function () {
+                    $(dom).empty()
+                }, 4000)
+            }
+        }
+    ])
 
 });

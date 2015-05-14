@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  *
  * @name            GreenfenceUser
- * @description     Module config
+ * @description     ...
  */
 
 define(['app'], function (app) {
