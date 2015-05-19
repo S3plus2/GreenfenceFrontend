@@ -86,6 +86,7 @@ require.config({
     deps: [
         './environment',
         './Kernel/Resource/KernelResource',
+        './Greenfence/Auth/GreenfenceAuth',
         './Greenfence/Homepage/GreenfenceHomepage',
         './Greenfence/User/GreenfenceUser',
         './Greenfence/Message/GreenfenceMessage',

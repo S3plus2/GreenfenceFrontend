@@ -17,93 +17,93 @@ define(['app'], function (app) {
 
         $stateProvider
             .state('operationById', {
-                url: "/:locale/operation/:operationId",
+                url: "/operation/:operationId",
                 controller: 'OperationDetailCtrl',
                 templateUrl: '/app/Greenfence/Company/views/operation_detail.html',
             })
             .state('addCompany', {
-                url: "/:locale/add_company",
+                url: "/add_company",
                 controller: 'CompanyProfileCtrl',
                 templateUrl: '/app/Greenfence/Company/views/add_company.html',
             })
             .state('operations', {
-                url: "/:locale/operations",
+                url: "/operations",
                 controller: 'OperationCtrl',
                 templateUrl: '/app/Greenfence/Company/views/add_operation.html',
             })
             .state('operationEditById', {
-                url: "/:locale/operation/edit/:operationId",
+                url: "/operation/edit/:operationId",
                 controller: 'OperationCtrl',
                 templateUrl: '/app/Greenfence/Company/views/add_operation.html',
             })
             .state('addProduct', {
-                url: "/:locale/add_product",
+                url: "/add_product",
                 templateUrl: '/app/Greenfence/Company/views/add_product.html',
                 controllerAs: 'vm',
                 controller: 'ProductCtrl'
             })
             .state('companyPublicProfile', {
-                url: "/:locale/company_public_profile",
+                url: "/company_public_profile",
                 controller: 'CompanyPublicProfileCtrl',
                 templateUrl: '/app/Greenfence/Company/views/company_public_profile.html',
             })
             .state('companyPublicProfileById', {
-                url: "/:locale/company_public_profile/:id",
+                url: "/company_public_profile/:id",
                 controller: 'CompanyPublicProfileCtrl',
                 templateUrl: '/app/Greenfence/Company/views/company_public_profile.html',
             })
             .state('companyPublicProfilesFilterByType', {
-                url: "/:locale/company_public_profile/filter/:type",
+                url: "/company_public_profile/filter/:type",
                 controller: 'CompanyPublicProfileCtrl',
                 templateUrl: '/app/Greenfence/Company/views/company_public_profile.html',
             })
             .state('companyPublicProfileByIdFilteredByType', {
-                url: "/:locale/company_public_profile/:id/filter/:type",
+                url: "/company_public_profile/:id/filter/:type",
                 controller: 'CompanyPublicProfileCtrl',
                 templateUrl: '/app/Greenfence/Company/views/company_public_profile.html',
             })
             .state('services', {
-                url: "/:locale/services",
+                url: "/services",
                 controller: 'ServiceCtrl',
                 templateUrl: '/app/Greenfence/Company/views/add_service.html',
             })
             .state('serviceEditByServiceId', {
-                url: "/:locale/service/edit/:serviceId",
+                url: "/service/edit/:serviceId",
                 controller: 'ServiceCtrl',
                 templateUrl: '/app/Greenfence/Company/views/add_service.html',
             })
             .state('addSupplyChain', {
-                url: "/:locale/add_supply_chain",
+                url: "/add_supply_chain",
                 controller: 'SupplyChainCtrl',
                 templateUrl: '/app/Greenfence/Company/views/add_supply_chain.html',
             })
             .state('addDocumentDefinitions', {
-                url: "/:locale/add_document_definitions",
+                url: "/add_document_definitions",
                 controller: 'DocumentDefinitionsCtrl',
                 templateUrl: '/app/Greenfence/Company/views/add_document_definition.html',
             })
             .state('companyDocuments', {
-                url: "/:locale/company_documents",
+                url: "/company_documents",
                 controller: 'CompanyDocumentCtrl',
                 templateUrl: '/app/Greenfence/Company/views/add_company_document.html',
             })
             .state('companyDocumentEditByDocumentId', {
-                url: "/:locale/company_document/edit/:documentId",
+                url: "/company_document/edit/:documentId",
                 controller: 'CompanyDocumentCtrl',
                 templateUrl: '/app/Greenfence/Company/views/add_company_document.html',
             })
             .state('assignRequirements', {
-                url: "/:locale/assign_requirements",
+                url: "/assign_requirements",
                 controller: 'RequirementAssignmentCtrl',
                 templateUrl: '/app/Greenfence/Company/views/assign_requirements.html',
             })
             .state('supplierById', {
-                url: "/:locale/supplier/:supplierId",
+                url: "/supplier/:supplierId",
                 controller: 'SupplierCtrl',
                 templateUrl: '/app/Greenfence/Company/views/supplier.html',
             })
             .state('buyerById', {
-                url: "/:locale/buyer/:buyerId",
+                url: "/buyer/:buyerId",
                 controller: 'BuyerCtrl',
                 templateUrl: '/app/Greenfence/Company/views/buyer.html',
             });

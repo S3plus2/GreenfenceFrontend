@@ -1,5 +1,5 @@
 <header class="header standard">
-    <a ui-sref="homepage({locale: 'en'})" class="logo standard"></a>
+    <a ui-sref="homepage" class="logo standard"></a>
     <dl class="form_cell form_cell_v1_mod header_search">
         <dt class="form_c_hline form_v1_mod hline_hide_mod header_mod">
             <label for="search">Search for facilities, products, employees etc...</label>
@@ -8,12 +8,12 @@
             <input type="text" id="search" ng-model="query" placeholder="Search for facilities, products, employees etc..." class="f_c_field second_mod header_mod " gf-enter="search(query)"/>
         </dd>
     </dl>
-    <a ui-sref="messageCenter({locale: 'en'})" title="Messaging Center" class="user_menu_msg_center_butt"></a>
+    <a ui-sref="messageCenter" title="Messaging Center" class="user_menu_msg_center_butt"></a>
     <nav class="user_menu_block">
         <div class="user_menu_butt">Menu<span class="user_menu_butt_decor"></span></div>
         <div class="user_menu_w">
             <ul class="section_menu_list header_mod">
-                <li class="section_menu_l_item header_mod"><a ui-sref="messageCenter({locale: 'en'})" title="Messaging Center" class="section_menu_link header_mod">Messaging Center</a></li>
+                <li class="section_menu_l_item header_mod"><a ui-sref="messageCenter" title="Messaging Center" class="section_menu_link header_mod">Messaging Center</a></li>
                 <li class="section_menu_l_item header_mod"><a href="" title="Wizard Menu" class="section_menu_link header_mod">Wizard Menu</a>
                     <ul class="section_menu_list header_mod sub_mod">
                         <li class="section_menu_l_item header_mod"><a href="" title="Add Operations" class="section_menu_link header_mod">Add Operations<span class="section_m_link_count">2k</span></a></li>
@@ -42,7 +42,7 @@
     </nav>
     <div class="user_block header_mod ">
         <div class="user_avatar_w header_mod ">
-            <a ui-sref="userEditProfile({locale: 'en'})">
+            <a ui-sref="userEditProfile">
                 <img src="i/header_user_ava.jpg" alt="Ron Vail" class="user_avatar_img header_mod"/>
             </a>
         </div>

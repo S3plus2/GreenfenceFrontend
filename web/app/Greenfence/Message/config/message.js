@@ -16,7 +16,7 @@ define(['app'], function (app) {
     app.config(['$stateProvider', function ($stateProvider) {
         $stateProvider
             .state("messageCenter", {
-                url: "/:locale/messages_center",
+                url: "/messages_center",
                 templateUrl: '/app/Greenfence/Message/views/messages_center.html',
                 controller: 'MessageCenterCtrl'
             });

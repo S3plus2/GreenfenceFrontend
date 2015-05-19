@@ -8,15 +8,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @name            GreenfenceHomepage
+ * @name            GreenfenceAuth
  * @description     ...
  */
 
 define(['app'], function (app) {
-    app.controller('HomepageCtrl', ['$location', '$scope', '$routeParams', '$rootScope', '$state', 'Environment',
+    app.controller('AuthCtrl', ['$location', '$scope', '$routeParams', '$rootScope', '$state', 'Environment',
         function ($location, $scope, $routeParams, $rootScope, $state, Environment) {
-
-            $state.transitionTo('userEditProfile');
-
+            $scope.emptyTemplate = true;
         }]);
 });

@@ -8,17 +8,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @name            GreenfenceSearch
+ * @name            GreenfenceAuth
  * @description     ...
  */
 
 define(['app'], function (app) {
     app.config(['$stateProvider', function ($stateProvider) {
         $stateProvider
-            .state("search", {
-                url: "/search",
-                controller: 'SearchCtrl',
-                templateUrl: '/app/Greenfence/Search/views/search_result.html'
+            .state("welcome_page", {
+                url: "/welcome_page",
+                controller: 'AuthCtrl',
+                templateUrl: '/app/Greenfence/Auth/views/welcome_page.html',
             });
     }]);
 });

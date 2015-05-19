@@ -16,7 +16,7 @@ define(['app'], function (app) {
     app.config(['$stateProvider', function ($stateProvider) {
         $stateProvider
             .state("homepage", {
-                url: "/:locale/",
+                url: "/",
                 controller: 'HomepageCtrl'
             });
     }]);
